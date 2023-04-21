@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <!-- font awesome icon kit -->
+    <script src="https://kit.fontawesome.com/d6d9d9ca7e.js" crossorigin="anonymous"></script>
+    <title>A.S.A</title>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="#" class="logo">
+                <img src="logo.png" alt="logo">
+            </a></li>
+            <li><a href="#"><i class="fa-solid fa-house"></i><span class="nav-item">Home</span></a></li>
+            <li><a href="#"><i class="fa-solid fa-clock-rotate-left"></i><span class="nav-item">History</span></a></li>
+            <li><a href="#"><i class="fa-solid fa-wallet"></i><span class="nav-item">Wallet</span></a></li>
+            <li><a href="#"><i class="fa-solid fa-eye"></i><span class="nav-item">Promo</span></a></li>
+            <li><a href="#"><i class="fa-solid fa-gear"></i><span class="nav-item">Setting</span></a></li>
+            <li><a href="#" class="logout"><i class="fa-solid fa-arrow-right-from-bracket"></i><span class="nav-item">Log out</span></a></li>
+        </ul>
+    </nav>
+
+    <section>
+        <div class="category">
+            <h1>Choose Category</h1>
+        </div>
+    </section>
+    <section>
+        <div class="scroll-container" id="scroll-container">
+            <div class="scroll-item">
+                <a href="#">A.S.A BEST</a>
+            </div>
+            <div class="scroll-item seafood">
+                    <a href="#">SEAFOOD</a>
+            </div>
+            <div class="scroll-item chicken">
+                <a href="#">CHICKEN</a>
+            </div>
+            <div class="scroll-item merienda">
+                <a href="#">MERIENDA</a>
+            </div>
+            <div class="scroll-item silog">
+                <a href="#">SILOG</a>
+            </div>
+            <div class="scroll-item beef">
+                <a href="#">BEEF</a>
+            </div>
+            <div class="scroll-item drinks">
+                <a href="#">DRINKS</a>
+            </div>
+            <div class="scroll-item rice">
+                <a href="#">RICE</a>
+            </div>
+        </div>
+    </section>
+
+
+    <script>
+        const container = document.getElementById('scroll-container');
+        let isDown = false;
+        let startX;
+        let scrollLeft;
+
+        container.addEventListener('mousedown', e => {
+        isDown = true;
+        startX = e.pageX - container.offsetLeft;
+        scrollLeft = container.scrollLeft;
+        container.style.cursor = 'grabbing';
+        });
+
+        container.addEventListener('mouseup', () => {
+        isDown = false;
+        container.style.cursor = 'grab';
+        });
+
+        container.addEventListener('mouseleave', () => {
+        isDown = false;
+        container.style.cursor = 'grab';
+        });
+
+        container.addEventListener('mousemove', e => {
+        if (!isDown) return;
+        e.preventDefault();
+        const x = e.pageX - container.offsetLeft;
+        const walk = (x - startX) * 3;
+        container.scrollLeft = scrollLeft - walk;
+        });
+    </script>
+</body>
+</html>
