@@ -20,7 +20,7 @@
             <li><a href="#" class="icon"><i class="fa-solid fa-wallet"></i><span class="nav-item">Wallet</span></a></li>
             <li><a href="#" class="icon"><i class="fa-solid fa-eye"></i><span class="nav-item">Promo</span></a></li>
             <li><a href="#" class="icon"><i class="fa-solid fa-gear"></i><span class="nav-item">Setting</span></a></li>
-            <li><a href="#" class="logout"><i class="fa-solid fa-arrow-right-from-bracket"></i><span class="nav-item">Log out</span></a></li>
+            <li><a href="index.html" class="logout"><i class="fa-solid fa-arrow-right-from-bracket"></i><span class="nav-item">Log out</span></a></li>
         </ul>
     </nav>
 
@@ -191,13 +191,13 @@
     </section>
     <section>
         <div class="scroll-container" id="scroll-container">
-            <div class="scroll-item best">
+            <div class="scroll-item best active">
                 <a href="home.html">A.S.A BEST</a>
             </div>
             <div class="scroll-item seafood">
                     <a href="seafood.html">SEAFOOD</a>
             </div>
-            <div class="scroll-item chicken active">
+            <div class="scroll-item chicken">
                 <a href="chicken.html">CHICKEN</a>
             </div>
             <div class="scroll-item merienda">
@@ -219,24 +219,74 @@
     </section>
 
     <div class="category">
-        <h1>Chicken</h1>
+        <h1>A.S.A Best Seller</h1>
     </div>
     <section class="foods">
         <div class="cart">
             <div class="sub-cart">
-                <img src="chicken/friedchicken.jpg" alt="">
+                <img src="best/crispy-pata-640.jpg" alt="">
                 <div>
-                    <h3>Fried Chicken</h3>
-                    <p>P350</p>
+                    <h3>Crispy Pata</h3>
+                    <p>P500</p>
                 </div>
             </div>
             <a href="#">Add to Billing</a>
         </div>
         <div class="cart">
             <div class="sub-cart">
-                <img src="chicken/Buttered-Chicken-768x768-min.jpg"  alt="">
+                <img src="best/patatim.JPG"  alt="">
                 <div>
-                    <h3>Buttered Chicken</h3>
+                    <h3>Pata Tim</h3>
+                    <p>P600</p>
+                </div>
+            </div>
+            <a href="#">Add to Billing</a>
+        </div>
+        <div class="cart">
+            <div class="sub-cart">
+                <img src="best/lechonkawali.jpg"  alt="">
+                <div>
+                    <h3>Lechon Kawali</h3>
+                    <p>P250</p>
+                </div>
+            </div>
+            <a href="#">Add to Billing</a>
+        </div>
+        <div class="cart">
+            <div class="sub-cart">
+                <img src="best/Pork-Sisig-2.jpg"  alt="">
+                <div>
+                    <h3>Pork Sisig</h3>
+                    <p>P250</p>
+                </div>
+            </div>
+            <a href="#">Add to Billing</a>
+        </div>
+        <div class="cart">
+            <div class="sub-cart">
+                <img src="best/bicolexpress.jpg"  alt="">
+                <div>
+                    <h3>Bicol Express</h3>
+                    <p>P200</p>
+                </div>
+            </div>
+            <a href="#">Add to Billing</a>
+        </div>
+        <div class="cart">
+            <div class="sub-cart">
+                <img src="best/Pork-Binagoongan.jpg"  alt="">
+                <div>
+                    <h3>Pork Binagoongan</h3>
+                    <p>P200</p>
+                </div>
+            </div>
+            <a href="#">Add to Billing</a>
+        </div>
+        <div class="cart">
+            <div class="sub-cart">
+                <img src="best/pizza.jpg"  alt="">
+                <div>
+                    <h3>Pizza</h3>
                     <p>P300</p>
                 </div>
             </div>
@@ -244,28 +294,17 @@
         </div>
         <div class="cart">
             <div class="sub-cart">
-                <img src="chicken/chickenRoll.png"  alt="">
+                <img src="best/chili-cheese-nacho-final.jpg"  alt="">
                 <div>
-                    <h3>Spring Roll</h3>
-                    <p>P180</p>
-                </div>
-            </div>
-            <a href="#">Add to Billing</a>
-        </div>
-        <div class="cart">
-            <div class="sub-cart">
-                <img src="chicken/buffalo-wing-png-transparent-chicken-wings-png-png.png"  alt="">
-                <div>
-                    <h3>Buffalo Wings</h3>
+                    <h3>Nachos</h3>
                     <p>P250</p>
                 </div>
             </div>
             <a href="#">Add to Billing</a>
         </div>
-        
     </section>
 
-    <section class="billing">
+    <!-- <section class="billing">
         <div>
             <div class="profile">
                 <p>I'm the Manager</p>
@@ -282,7 +321,7 @@
                 <h1>Total</h1>
             </div>
         </div>
-    </section>
+    </section> -->
 
     <script>
         const container = document.getElementById('scroll-container');
@@ -315,20 +354,21 @@
         container.scrollLeft = scrollLeft - walk;
         });
     </script>
-    <script>
-        function openBill() {
-            document.getElementById("sideBill").style.width = "250px";
-            document.getElementById("scroll-container").style.marginRight = "250px";
-        }
-        
-        function closeBill() {
-            document.getElementById("sideBill").style.width = "0";
-            document.getElementById("scroll-container").style.marginRight = "0px";
-        }
+
+<script>
+    function openBill() {
+      document.getElementById("sideBill").style.width = "250px";
+      document.getElementById("scroll-container").style.marginRight = "250px";
+    }
     
-        window.addEventListener("resize", () => {
+    function closeBill() {
+      document.getElementById("sideBill").style.width = "0";
+      document.getElementById("scroll-container").style.marginRight = "0px";
+    }
+
+    window.addEventListener("resize", () => {
         const width = window.innerWidth;
-    
+
         if(width >= 1000) {
             document.getElementById("sideBill").style.width = "250px";
             document.getElementById("scroll-container").style.marginRight = "250px";
@@ -343,7 +383,7 @@
     });
     function onload() {
         const width = window.innerWidth;
-    
+
         if(width >= 1000) {
             document.getElementById("sideBill").style.width = "250px";
             document.getElementById("scroll-container").style.marginRight = "250px";
@@ -355,7 +395,7 @@
             document.getElementById("sideBill").style.width = "400px";
             document.getElementById("scroll-container").style.marginRight = "400px";
         }
-    };
-    </script>
+    }
+</script>
 </body>
 </html>
