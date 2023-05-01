@@ -172,7 +172,7 @@
                         <form action="billinginsert.php" method="post">
                             <div class="form-cart">
                                 <input type="text" name="p_id" value="<?php echo $row['p_id'] ?>" hidden>
-                                <img src="data:image/jpg;charset=utf8;base64,<?php echo base64_encode($row['p_photo']); ?>" name="p_photo"/>
+                                <img src="data:image/jpg;charset=utf8;base64,<?php echo base64_encode($row['p_photo'])?>" name="p_photo" />
                                 <p> </p>
                                 <div class="counter">
                                     <h3><?php echo $row['p_name'] ?><input type="text" name="p_name" value="<?php echo $row ['p_name'] ?>" hidden></h3>
@@ -186,7 +186,7 @@
                             </div>
                             <input type="submit" value="Add to Billing" class="addtobilling">
                         </form>
-                    </div>
+                        </div>
                 </div>
             <?php } ?>
         <?php } else { ?>

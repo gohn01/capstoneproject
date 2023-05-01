@@ -21,6 +21,7 @@ nav {
     overflow: hidden;
     transition: width 0.2s linear;
     margin-right: 10px;
+    box-shadow: 10px 0 10px lightgray;
 }
 
 .logo {
@@ -293,6 +294,7 @@ a {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    gap: 10px;
     margin: 0;
 }
 
@@ -301,6 +303,7 @@ a {
     margin: auto;
     display: inline-block;
     justify-content: center;
+    padding: 10px 0;
 }
 
 .counter h3 {
