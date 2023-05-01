@@ -91,7 +91,8 @@
                                 <span>&times;</span>
                             </div>
                                 <div class="item_img">
-                                    <img src="data:image/jpg;charset=utf8;base64,<?php echo base64_encode($row1['p_photo']); ?>" name="p_photo" />
+                                    <img src="data:image/jpg;charset=utf8;base64,<?php echo base64_encode($row1['p_photo']); ?>" name="p_photo" /><br>
+                                    
                                 </div>
                             <div class="item_details">
                                 <p><?php echo $row['o_name'];?> <input type="text" name="name" value="<?php echo $row['o_name']?>"> </p>
@@ -224,7 +225,7 @@
         </section>  
       
 
-    <!-- <section class="billing">
+     <!--<section class="billing">
         <div>
             <div class="profile">
                 <p>I'm the Manager</p>
