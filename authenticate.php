@@ -2,7 +2,7 @@
     include "connection.php"; //to connect the database
     $password = trim($_POST['password']);
 
-    $sql = "SELECT * FROM login WHERE password='$password'";
+    $sql = "SELECT * FROM employees WHERE e_pass='$password'";
 
     $result = mysqli_query($connection, $sql);
 
@@ -11,7 +11,7 @@
           
         if($count == 1){  
             echo "<script> 
-                    window.location.href='home.html'
+                    window.location.href='home.php'
                 </script>"; 
         }  
         else{  

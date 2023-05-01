@@ -3,7 +3,7 @@
     $user = "root";
     $password = "";
     $db = "pos";
-    $port = 3307;
+    $port = 3306;
 
     $connection = mysqli_connect($host, $user, $password, $db, $port);
 
@@ -12,4 +12,7 @@
                 echo "Unable to connect to database.";
                 echo "Message: " . mysqli_connect_error();
             }
+        else{
+             echo "connected";
+        }
 ?>
