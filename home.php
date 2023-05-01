@@ -45,7 +45,7 @@
                         <p>Bills</p>
                         <a href="javascript:void(0)" class="closebtn" onclick="closeBill()">&times;</a>
                     </div>
-<<<<<<< HEAD
+
                     <?php       
                              $sql = "SELECT * FROM orders"; 
                              $totalprice = 0;
@@ -75,9 +75,8 @@
                                 <strong><?php echo $row['o_price'];?><input type="text" name="price" value="<?php echo $row['o_price']?>"></strong>
                                     <div class="qty">
                                         <div class="counter">
-                                               
-                                                <?php  
-=======
+                    <?php } }   } ?> 
+                    
                     <?php
                     $sql = "SELECT * FROM orders";
                     $totalprice = 0;
@@ -108,7 +107,7 @@
                                                     <div class="counter">
 
                                                         <?php
->>>>>>> 2ae200953cc1d9dd2ac0511c99afa1d0db65b8a6
+
                                                         $total = $quantity * $price;
                                                         echo "Quantity"; ?> <input type="text" name="quantity" value="<?php echo $quantity; ?>" $price; $total; ?>
                                                         <br> <label for="">TOTAL:</label> <input type="text" value="<?php echo $total; ?>" name="total">
