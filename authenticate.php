@@ -11,7 +11,7 @@
           
         if($count == 1){  
             echo "<script> 
-                    window.location.href='home.html'
+                    window.location.href='home.php'
                 </script>"; 
         }  
         else{  
