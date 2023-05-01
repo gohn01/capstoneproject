@@ -9,14 +9,14 @@ $o_quant = $_POST['quantity'];
     $result = mysqli_query($connection, $sql);
           
         if($result == "TRUE"){
-            echo "Inserted" ; 
-            // echo "<script> 
-            //         window.location.href='home.php'
-            //     </script>"; 
+            echo "<script> 
+                    window.location.href='home.php'
+                </script>"; 
         }  
         else{  
             echo "<script> 
-                    alert('Login Failed');
-                    window.location.href='index.html'
+                    alert('Something went wrong!');
+                    window.location.href='home.html'
                 </script>";
-        }      ?>
+        }      
+?>

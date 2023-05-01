@@ -45,59 +45,69 @@
                         <p>Bills</p>
                         <a href="javascript:void(0)" class="closebtn" onclick="closeBill()">&times;</a>
                     </div>
-                    <?php
-                    $sql = "SELECT * FROM orders";
-                    $totalprice = 0;
-                    $result = mysqli_query($connection, $sql);
-                    if ($result->num_rows > 0) {
-                        while ($row = $result->fetch_assoc()) {
-                            $pid = $row['p_id'];
-                            $quantity = $row['o_quantity'];
-                            $price = $row['o_price'];
-                            $sql1 = "SELECT * FROM product WHERE p_id = '$pid'";
-                            $result1 = mysqli_query($connection, $sql1);
-                            if ($result1->num_rows > 0) {
-                                $row1 = $result1->fetch_assoc()
-                    ?>
-                                <form action="checkout.php" method="post">
-                                    <div class="bill_items">
-                                        <div class="bill_item">
-                                            <div class="remove_item">
-                                                <span>&times;</span>
-                                            </div>
-                                            <div class="item_img">
-                                                <img src="data:image/jpg;charset=utf8;base64,<?php echo base64_encode($row1['p_photo']); ?>" name="p_photo" />
-                                            </div>
-                                            <div class="item_details">
-                                                <p><?php echo $row['o_name']; ?> <input type="text" name="name" value="<?php echo $row['o_name'] ?>"> </p>
-                                                <strong><?php echo $row['o_price']; ?><input type="text" name="price" value="<?php echo $row['o_price'] ?>"></strong>
-                                                <div class="qty">
-                                                    <div class="counter">
+                    <div class="bill_items">
+                    <?php       
+                             $sql = "SELECT * FROM orders"; 
+                             $totalprice = 0;
+                                $result = mysqli_query($connection, $sql);
+                            if($result->num_rows > 0){
+                              while($row = $result->fetch_assoc()){ 
+                                        $pid = $row['p_id'];
+                                        $quantity = $row['o_quantity'];
+                                        $price = $row['o_price'];
+                                        $sql1 = "SELECT * FROM product WHERE p_id = '$pid'"; 
+                                        $result1 = mysqli_query($connection, $sql1);
+                                        if($result1->num_rows > 0){
+                                            $row1 = $result1->fetch_assoc()
+                                    ?>
 
-                                                        <?php
-                                                        $total = $quantity * $price;
-                                                        echo "Quantity"; ?> <input type="text" name="quantity" value="<?php echo $quantity; ?>" $price; $total; ?>
-                                                        <br> <label for="">TOTAL:</label> <input type="text" value="<?php echo $total; ?>" name="total">
-                                                    </div>
-                                                    <?php $totalprice = $totalprice + $total; ?>
-                                                </div>
+                        <div class="bill_item">
+                        <form action="delete.php" method="post">
+                            <div class="remove_item">
+                                <input type="submit" name="delete"  id="delete" value="&times;">
 
+                                <input type="hidden" name="o_name" id="o_name" value="<?php echo $row["o_name"] ?>">
 
-                                            </div>
-                                        </div>
-                                    </div>
-                        <?php  }
-                        }
-                    } ?>
-                        <div class="bill_actions">
-                            <div class="total">
-                                <p>Total:</p>
-                                <p>₱<span id="total_price"><?php echo $totalprice; ?></span></p>
+                                
                             </div>
-                            <input type="submit" value="Pay Order">
+                        </form>
+
+                                <div class="item_img">
+                                    <img src="data:image/jpg;charset=utf8;base64,<?php echo base64_encode($row1['p_photo']); ?>" name="p_photo" />
+                                </div>
+                            <div class="item_details">
+                                <p>
+                                    <?php echo $row['o_name'];?> 
+                                    <input type="hidden" name="name" value="<?php echo $row['o_name']?>"> 
+                                </p>
+                                <strong>
+                                <?php
+                                    $total = $quantity * $price;
+                                ?> 
+                                <?php echo $row['o_price']. ' x '. $quantity; ?>
+                                    <input type="hidden" name="price" value="<?php echo $row['o_price'] ?>">
+
+                                </strong>
+                                <?php 
+                                        echo "Total: ". $total; 
+                                    ?>
+                            </div>
+
+                                <?php $totalprice = $totalprice + $total; ?>
                         </div>
+                        <?php  }   
+                } 
+            
+               } ?>
+                    </div>
+                    <div class="bill_actions">
+                        <div class="total">
+                            <p>Total:</p>
+                            <p>₱<span id="total_price"><?php echo $totalprice; ?></span></p> 
+                        </div>
+                      <input type="submit" value="Pay Order">
+                    </div>
                 </div>
-                </form>
             </div>
         </div>
     </section>
