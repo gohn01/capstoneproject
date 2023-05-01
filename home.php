@@ -110,8 +110,7 @@
                 </div>
             </div>
         </div>
-    </section>
-    <section>
+    </section>    <section>
         <div class="scroll-container" id="scroll-container">
             <div class="scroll-item best active">
                 <form action="home.php" method="post" class="form-category">
