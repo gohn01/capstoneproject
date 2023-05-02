@@ -13,6 +13,6 @@
                 echo "Message: " . mysqli_connect_error();
             }
         else{
-             echo "connected";
+             
         }
 ?>
