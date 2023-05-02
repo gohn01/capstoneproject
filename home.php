@@ -43,7 +43,7 @@ include "connection.php";
             <li><a href="#" class="icon"><i class="fa-solid fa-clock-rotate-left"></i><span class="nav-item">History</span></a></li>
             <li><a href="#" class="icon"><i class="fa-solid fa-wallet"></i><span class="nav-item">Wallet</span></a></li>
             <li><a href="#" class="icon"><i class="fa-solid fa-eye"></i><span class="nav-item">Promo</span></a></li>
-            <li><a href="#" class="icon"><i class="fa-solid fa-gear"></i><span class="nav-item">Setting</span></a></li>
+            <li><a href="settings.php" class="icon"><i class="fa-solid fa-gear"></i><span class="nav-item">Setting</span></a></li>
             <li><a href="index.html" class="logout"><i class="fa-solid fa-arrow-right-from-bracket"></i><span class="nav-item">Log out</span></a></li>
         </ul>
     </nav>
@@ -138,43 +138,43 @@ include "connection.php";
             <div class="scroll-item seafood">
                 <form action="home.php" method="post">
                     <input type="text" value="seafood" name="category" hidden>
-                    <input type="submit" value="Seafood" class="scroll-input">
+                    <input type="submit" value="seafood" class="scroll-input">
                 </form>
             </div>
             <div class="scroll-item chicken">
                 <form action="home.php" method="post">
                     <input type="text" value="chicken" name="category" hidden>
-                    <input type="submit" value="Chicken">
+                    <input type="submit" value="chicken">
                 </form>
             </div>
             <div class="scroll-item merienda">
                 <form action="home.php" method="post">
-                    <input type="text" value="mirienda" name="category" hidden>
-                    <input type="submit" value="Merienda">
+                    <input type="text" value="merienda" name="category" hidden>
+                    <input type="submit" value="merienda">
                 </form>
             </div>
             <div class="scroll-item silog">
                 <form action="home.php" method="post">
                     <input type="text" value="silog" name="category" hidden>
-                    <input type="submit" value="Silog">
+                    <input type="submit" value="silog">
                 </form>
             </div>
             <div class="scroll-item beef">
                 <form action="home.php" method="post">
                     <input type="text" value="beef" name="category" hidden>
-                    <input type="submit" value="Beef">
+                    <input type="submit" value="beef">
                 </form>
             </div>
             <div class="scroll-item drinks">
                 <form action="home.php" method="post">
                     <input type="text" value="drinks" name="category" hidden>
-                    <input type="submit" value="Drinks">
+                    <input type="submit" value="drinks">
                 </form>
             </div>
             <div class="scroll-item rice">
                 <form action="home.php" method="post">
                     <input type="text" value="rice" name="category" hidden>
-                    <input type="submit" value="Rice" class="scroll-input">
+                    <input type="submit" value="rice" class="scroll-input">
                 </form>
             </div>
         </div>
