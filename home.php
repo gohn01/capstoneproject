@@ -1,3 +1,22 @@
+<?php 
+include "connection.php";
+
+    $sql=mysqli_query($connection, "SELECT * FROM orders");
+    if(isset($_GET['p_id']) && isset($_GET['quantity'])) {
+        $p_id = $_GET['p_id'];
+        $quantity = $_GET['quantity'];
+        $sql2 = "UPDATE orders SET o_quantity='$quantity' WHERE p_id='$p_id'";
+        $result2 = mysqli_query($connection, $sql2);
+
+        if ($result2 === TRUE) {
+            header("location:home.php");
+        } else {
+            echo "Error updating record: " . mysqli_error($connection);
+        }
+    }
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -49,50 +68,47 @@
                     <?php       
                              $sql = "SELECT * FROM orders"; 
                              $totalprice = 0;
-                                $result = mysqli_query($connection, $sql);
+                             $result = mysqli_query($connection, $sql);
                             if($result->num_rows > 0){
                               while($row = $result->fetch_assoc()){ 
-                                        $pid = $row['p_id'];
+                                        $p_id = $row['p_id'];
                                         $quantity = $row['o_quantity'];
                                         $price = $row['o_price'];
-                                        $sql1 = "SELECT * FROM product WHERE p_id = '$pid'"; 
+                                        $sql1 = "SELECT * FROM product WHERE p_id = '$p_id'"; 
                                         $result1 = mysqli_query($connection, $sql1);
                                         if($result1->num_rows > 0){
-                                            $row1 = $result1->fetch_assoc()
+                                            $row1 = $result1->fetch_assoc();
+                                            $total = $price * $quantity;
                                     ?>
 
                         <div class="bill_item">
-                        <form action="delete.php" method="post">
-                            <div class="remove_item">
-                                <input type="submit" name="delete"  id="delete" value="&times;">
+                            <form action="delete.php" method="post">
+                                <div class="remove_item">
+                                    <input type="submit" name="delete"  id="delete" value="&times;">
 
-                                <input type="hidden" name="o_name" id="o_name" value="<?php echo $row["o_name"] ?>">
+                                    <input type="hidden" name="o_name" id="o_name" value="<?php echo $row["o_name"] ?>">
 
-                                
-                            </div>
-                        </form>
-
-                                <div class="item_img">
-                                    <img src="data:image/jpg;charset=utf8;base64,<?php echo base64_encode($row1['p_photo']); ?>" name="p_photo" />
+                                    
                                 </div>
+                            </form>
+
+                            <div class="item_img">
+                                <img src="data:image/jpg;charset=utf8;base64,<?php echo base64_encode($row1['p_photo']); ?>" name="p_photo" />
+                            </div>
                             <div class="item_details">
                                 <p>
                                     <?php echo $row['o_name'];?> 
                                     <input type="hidden" name="name" value="<?php echo $row['o_name']?>"> 
                                 </p>
                                 <strong>
-                                <?php
-                                    $total = $quantity * $price;
-                                ?> 
-                                <?php echo $row['o_price']. ' x '. $quantity; ?>
-                                    <input type="hidden" name="price" value="<?php echo $row['o_price'] ?>">
-
+                                    ₱<span class="item_price"><?php echo $total ?></span>
                                 </strong>
-                                <?php 
-                                        echo "Total: ". $total; 
-                                    ?>
-                            </div>
 
+                                <div class="item_details2">
+    <button type="submit" class="down" name="updatebtn" onClick="decreaseCount(this, '<?php echo $row["p_id"] ?>')">-</button>
+    <input type="text" value="<?php echo $quantity ?>" name="quantity">          
+    <button type="submit" class="up" name="updatebtn" onClick="increaseCount(this, '<?php echo $row["p_id"] ?>')">+</button>
+</div>                            </div>
                                 <?php $totalprice = $totalprice + $total; ?>
                         </div>
                         <?php  }   
@@ -110,8 +126,9 @@
                 </div>
             </div>
         </div>
-    </section>    <section>
-        <div class="scroll-container" id="scroll-container">
+    </section>
+    <section>
+            <div class="scroll-container" id="scroll-container">
             <div class="scroll-item best active">
                 <form action="home.php" method="post" class="form-category">
                     <input type="text" value="best" name="category" hidden>
@@ -186,11 +203,7 @@
                                 <div class="counter">
                                     <h3><?php echo $row['p_name'] ?><input type="text" name="p_name" value="<?php echo $row ['p_name'] ?>" hidden></h3>
                                     <p><?php echo "P" . $row['p_price'] ?><input type="text" name="p_price" value="<?php echo $row['p_price'] ?>" hidden></p> 
-                                    <div class="quantity">
-                                        <span class="down" onClick='decreaseCount(event, this)'>-</span>
-                                        <input type="text" value="1" name="quantity">
-                                        <span class="up" onClick='increaseCount(event, this)'>+</span>
-                                    </div>
+                                        <input type="hidden" value="1" name="quantity">
                                 </div>
                             </div>
                             <input type="submit" value="Add to Billing" class="addtobilling">
@@ -204,49 +217,39 @@
     </section>
 
 
-    <!-- <section class="billing">
-        <div>
-            <div class="profile">
-                <p>I'm the Manager</p>
-                <h1>Alexis John Perez</h1>
-            </div>
-            <div class="bills">
-                <h1>Bills</h1>
-            </div>
-            <div class="products">
-                
-            </div>
-            <div>
-                <p>Subtotal</p>
-                <h1>Total</h1>
-            </div>
-        </div>
-    </section> -->
+
+
+
+
+
+
+
     <!-- for increase and decrease quantity of order -->
     <script type="text/javascript">
-        function add() {
+    function increaseCount(b, prod) {
+        let input = b.previousElementSibling;
+        let value = parseInt(input.value, 10);
+        value = isNaN(value) ? 0 : value;
+        value++;
+        input.value = value;
 
-        }
+        let url = "http://capstoneproject.test/home.php?p_id=" + prod + "&quantity=" + value;
+        window.location.href = url;
+    }
 
-        function increaseCount(a, b) {
-            let input = b.previousElementSibling;
-            let value = parseInt(input.value, 10);
+    function decreaseCount(b, prod) {
+        let input = b.nextElementSibling;
+        let value = parseInt(input.value, 10);
+        if (value > 1) {
             value = isNaN(value) ? 0 : value;
-            value++;
+            value--;
             input.value = value;
+            let url = "http://capstoneproject.test/home.php?p_id=" + prod + "&quantity=" + value;
+            window.location.href = url;
         }
-
-        function decreaseCount(a, b) {
-            let input = b.nextElementSibling;
-            let value = parseInt(input.value, 10);
-            if (value > 1) {
-                value = isNaN(value) ? 0 : value;
-                value--;
-                input.value = value;
-            }
-        }
-    </script>
-    <script>
+    }
+</script>    
+<script>
         const container = document.getElementById('scroll-container');
         let isDown = false;
         let startX;
