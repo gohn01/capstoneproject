@@ -12,7 +12,4 @@
                 echo "Unable to connect to database.";
                 echo "Message: " . mysqli_connect_error();
             }
-        else{
-             
-        }
 ?>

@@ -46,3 +46,16 @@ $o_quant = $_POST['quantity'];
     }
           
         
+        if($result == "TRUE"){
+           echo "<script> 
+                      alert('Order Entered');
+                      window.location.href='home.php'
+                </script>"; 
+        }  
+        else{  
+            echo "<script> 
+                    alert('Something went wrong!');
+                    window.location.href='home.html'
+                </script>";
+        }      
+?>
