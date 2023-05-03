@@ -7,7 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="home.css">
     <!-- font awesome icon kit -->
-    <script src="https://kit.fontawesome.com/d6d9d9ca7e.js" crossorigin="anonymous"></script>
+
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <title>A.S.A</title>
 
 </head>
@@ -21,7 +22,7 @@
                     <img src="logo.png" alt="logo">
                 </a></li>
             <li><a href="#" class="icon active"><i class="fa-solid fa-house"></i><span class="nav-item">Home</span></a></li>
-            <li><a href="#" class="icon"><i class="fa-solid fa-clock-rotate-left"></i><span class="nav-item">History</span></a></li>
+            <li><a href="reports.php" class="icon"><i class="fa-solid fa-clock-rotate-left"></i><span class="nav-item">History</span></a></li>
             <li><a href="#" class="icon"><i class="fa-solid fa-wallet"></i><span class="nav-item">Wallet</span></a></li>
             <li><a href="#" class="icon"><i class="fa-solid fa-eye"></i><span class="nav-item">Promo</span></a></li>
             <li><a href="#" class="icon"><i class="fa-solid fa-gear"></i><span class="nav-item">Setting</span></a></li>
@@ -193,9 +194,9 @@
                                     </div>
                                 </div>
                             </div>
-                            <input type="submit" value="Add to Billing" class="addtobilling">
+                            <input type="submit" onclick="JSalert()" value="Add to Billing" class="addtobilling">
                         </form>
-                        </div>
+                    </div>
                 </div>
             <?php } ?>
         <?php } else { ?>
@@ -222,6 +223,12 @@
             </div>
         </div>
     </section> -->
+
+    <script type="text/javascript">
+        function JSalert(){
+            swal("Added", "Successfully!", "success");
+        }
+    </script>
     <!-- for increase and decrease quantity of order -->
     <script type="text/javascript">
         function add() {
