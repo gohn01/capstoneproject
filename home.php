@@ -26,7 +26,7 @@ include "connection.php";
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="home.css">
     <!-- font awesome icon kit -->
-
+    <script src="https://kit.fontawesome.com/d6d9d9ca7e.js" crossorigin="anonymous"></script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <title>A.S.A</title>
 
@@ -218,7 +218,6 @@ include "connection.php";
     </section>
 
 
-<<<<<<< HEAD
     <!-- <section class="billing">
         <div>
             <div class="profile">
@@ -243,15 +242,6 @@ include "connection.php";
             swal("Added", "Successfully!", "success");
         }
     </script>
-=======
-
-
-
-
-
-
-
->>>>>>> 39d11bcf3e2ddf03c175cba35fd8e4c65606dc03
     <!-- for increase and decrease quantity of order -->
     <script type="text/javascript">
     function increaseCount(b, prod) {

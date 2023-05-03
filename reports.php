@@ -53,7 +53,7 @@
 
     <div class="card mt-4">
         <div class="card-body">
-            <table class="table table-borderd">
+            <table class="table">
                 <thead>
                     <tr>
                         <th>Order ID</th>
@@ -63,7 +63,6 @@
                         <th>Quantity</th>
                         <th>Date Created</th>
                         <th>Date Updated</th>
-                        <th>Total</th>
                         <th>Action</th>
                     </tr>
                 </thead>
@@ -90,7 +89,17 @@
                                     <td><?php echo $row['o_quantity']?></td>
                                     <td><?php echo $row['date_created']?></td>
                                     <td><?php echo $row['date_updated']?></td>
-                                    <td></td>
+                                    <td class="d-flex gap-2">
+                                        <form action="update.php" method="POST">
+                                                <input type="submit" name="update" id="update" value="Update" class="btn btn-primary">
+                                                <input type="hidden" name="o_id" id="o_id" value="<?php echo $row['o_id']?>">
+                                        </form>
+                            
+                                        <form action="delete.php" method="POST">
+                                            <input type="hidden" name="p_id" id="p_id" value="<?php echo $row['p_id']?>">
+                                            <input type="submit" name="delete" id="delete" value="Delete" onclick="return confirm('DELETE?')" class="btn btn-danger">
+                                        </form>            
+                                   </td>
                                 </tr>
 
                             <?php 
