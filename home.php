@@ -41,9 +41,8 @@ include "connection.php";
                     <img src="logo.png" alt="logo">
                 </a></li>
             <li><a href="#" class="icon active"><i class="fa-solid fa-house"></i><span class="nav-item">Home</span></a></li>
-            <li><a href="reports.php" class="icon"><i class="fa-solid fa-clock-rotate-left"></i><span class="nav-item">History</span></a></li>
-            <li><a href="#" class="icon"><i class="fa-solid fa-wallet"></i><span class="nav-item">Wallet</span></a></li>
-            <li><a href="#" class="icon"><i class="fa-solid fa-eye"></i><span class="nav-item">Promo</span></a></li>
+            <li><a href="#" class="icon"><i class="fa-solid fa-clock-rotate-left"></i><span class="nav-item">Inventory</span></a></li>
+            <li><a href="reports.php" class="icon"><i class="fa-solid fa-wallet"></i><span class="nav-item">Wallet</span></a></li>
             <li><a href="settings.php" class="icon"><i class="fa-solid fa-gear"></i><span class="nav-item">Setting</span></a></li>
             <li><a href="index.html" class="logout"><i class="fa-solid fa-arrow-right-from-bracket"></i><span class="nav-item">Log out</span></a></li>
         </ul>
@@ -106,10 +105,11 @@ include "connection.php";
                                 </strong>
 
                                 <div class="item_details2">
-    <button type="submit" class="down" name="updatebtn" onClick="decreaseCount(this, '<?php echo $row["p_id"] ?>')">-</button>
-    <input type="text" value="<?php echo $quantity ?>" name="quantity">          
-    <button type="submit" class="up" name="updatebtn" onClick="increaseCount(this, '<?php echo $row["p_id"] ?>')">+</button>
-</div>                            </div>
+                                <button type="submit" class="down" name="updatebtn" onClick="decreaseCount(this, '<?php echo $row["p_id"] ?>')">-</button>
+                                <input type="text" value="<?php echo $quantity ?>" name="quantity">          
+                                <button type="submit" class="up" name="updatebtn" onClick="increaseCount(this, '<?php echo $row["p_id"] ?>')">+</button>
+                            </div>                            
+                        </div>
                                 <?php $totalprice = $totalprice + $total; ?>
                         </div>
                         <?php  }   

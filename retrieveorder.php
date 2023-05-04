@@ -16,4 +16,5 @@
     $result = mysqli_query($connection,$sql) or 
     trigger_error("Failed SQL". mysqli_error($connection),E_USER_ERROR);
 
+    
 ?>
