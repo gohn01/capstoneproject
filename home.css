@@ -21,6 +21,7 @@ nav {
     overflow: hidden;
     transition: width 0.2s linear;
     margin-right: 10px;
+    box-shadow: 10px 0 10px lightgray;
 }
 
 .logo {
@@ -279,6 +280,8 @@ a {
     width: 200px;
     border-radius: 10px;
     height: 150px;
+    margin: 10px;
+   
 }
 
 .cart {
@@ -293,7 +296,8 @@ a {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin: 0;
+    gap: 10px;
+    
 }
 
 .counter {
@@ -301,13 +305,14 @@ a {
     margin: auto;
     display: inline-block;
     justify-content: center;
+    padding: 10px 0;
+    margin-right: 10px;
 }
 
 .counter h3 {
     font-size: 20px;
     font-weight: 500;
-    padding: 10px 0;
-    
+    padding: 10px 0 ;
 }
 
 .counter p {

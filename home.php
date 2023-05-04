@@ -23,7 +23,7 @@
                     <img src="logo.png" alt="logo">
                 </a></li>
             <li><a href="#" class="icon active"><i class="fa-solid fa-house"></i><span class="nav-item">Home</span></a></li>
-            <li><a href="#" class="icon"><i class="fa-solid fa-clock-rotate-left"></i><span class="nav-item">History</span></a></li>
+            <li><a href="reports.php" class="icon"><i class="fa-solid fa-clock-rotate-left"></i><span class="nav-item">History</span></a></li>
             <li><a href="#" class="icon"><i class="fa-solid fa-wallet"></i><span class="nav-item">Wallet</span></a></li>
             <li><a href="#" class="icon"><i class="fa-solid fa-eye"></i><span class="nav-item">Promo</span></a></li>
             <li><a href="settings.php" class="icon"><i class="fa-solid fa-gear"></i><span class="nav-item">Setting</span></a></li>
@@ -267,7 +267,7 @@
                         <form action="billinginsert.php" method="post">
                             <div class="form-cart">
                                 <input type="text" name="p_id" value="<?php echo $row['p_id'] ?>" hidden>
-                                <img src="data:image/jpg;charset=utf8;base64,<?php echo base64_encode($row['p_photo']); ?>" name="p_photo"/>
+                                <img src="data:image/jpg;charset=utf8;base64,<?php echo base64_encode($row['p_photo'])?>" name="p_photo" />
                                 <p> </p>
                                 <div class="counter">
                                     <h3><?php echo $row['p_name'] ?><input type="text" name="p_name" value="<?php echo $row ['p_name'] ?>" hidden></h3>
@@ -275,7 +275,7 @@
                                         <input type="hidden" value="1" name="quantity">
                                 </div>
                             </div>
-                            <input type="submit" value="Add to Billing" class="addtobilling">
+                            <input type="submit" onclick="JSalert()" value="Add to Billing" class="addtobilling">
                         </form>
                     </div>
                 </div>
@@ -286,6 +286,24 @@
     </section>
 
 
+    <!-- <section class="billing">
+        <div>
+            <div class="profile">
+                <p>I'm the Manager</p>
+                <h1>Alexis John Perez</h1>
+            </div>
+            <div class="bills">
+                <h1>Bills</h1>
+            </div>
+            <div class="products">
+                
+            </div>
+            <div>
+                <p>Subtotal</p>
+                <h1>Total</h1>
+            </div>
+        </div>
+    </section> -->
 
 
 

@@ -11,7 +11,7 @@
           
                       <?php while($row = $result->fetch_assoc()){ ?> 
                     <input type="text" value='<?php echo $row['p_id'] ?>'><br/>    
-                 <img src="data:image/jpg;charset=utf8;base64,<?php echo base64_encode($row['p_photo']); ?>" /> <br/>
+                 <img width="150px" src="data:image/jpg;charset=utf8;base64,<?php echo base64_encode($row['p_photo']); ?>" /> <br/>
                     <input type="text" value='<?php echo $row['p_price'] ?>'>
                         <?php } ?> 
                 <?php }else{ ?> 
