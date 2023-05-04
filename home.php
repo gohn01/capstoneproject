@@ -1,22 +1,3 @@
-<?php 
-include "connection.php";
-
-    $sql=mysqli_query($connection, "SELECT * FROM orders");
-    if(isset($_GET['p_id']) && isset($_GET['quantity'])) {
-        $p_id = $_GET['p_id'];
-        $quantity = $_GET['quantity'];
-        $sql2 = "UPDATE orders SET o_quantity='$quantity' WHERE p_id='$p_id'";
-        $result2 = mysqli_query($connection, $sql2);
-
-        if ($result2 === TRUE) {
-            header("location:home.php");
-        } else {
-            echo "Error updating record: " . mysqli_error($connection);
-        }
-    }
-
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -26,7 +7,9 @@ include "connection.php";
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="home.css">
     <!-- font awesome icon kit -->
-    <script src="https://kit.fontawesome.com/d6d9d9ca7e.js" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/d6d9d9ca7e.js" 
+    crossorigin="anonymous"></script>
+
     <title>A.S.A</title>
 
 </head>
@@ -101,14 +84,14 @@ include "connection.php";
                                     <input type="hidden" name="name" value="<?php echo $row['o_name']?>"> 
                                 </p>
                                 <strong>
-                                    ₱<span class="item_price"><?php echo $total ?></span>
+                                    ₱<span class="item_price"id="item_price_<?php echo $p_id ?>"><?php echo $total ?></span>
                                 </strong>
 
                                 <div class="item_details2">
-    <button type="submit" class="down" name="updatebtn" onClick="decreaseCount(this, '<?php echo $row["p_id"] ?>')">-</button>
-    <input type="text" value="<?php echo $quantity ?>" name="quantity">          
-    <button type="submit" class="up" name="updatebtn" onClick="increaseCount(this, '<?php echo $row["p_id"] ?>')">+</button>
-</div>                            </div>
+                                    <button type="submit" class="down" name="updatebtn" onClick="decreaseCount(this, '<?php echo $row["p_id"] ?>')">-</button>
+                                    <input type="text" value="<?php echo $quantity ?>" name="quantity">          
+                                    <button type="submit" class="up" name="updatebtn" onClick="increaseCount(this, '<?php echo $row["p_id"] ?>')">+</button>
+                                </div>                            </div>
                                 <?php $totalprice = $totalprice + $total; ?>
                         </div>
                         <?php  }   
@@ -121,8 +104,94 @@ include "connection.php";
                             <p>Total:</p>
                             <p>₱<span id="total_price"><?php echo $totalprice; ?></span></p> 
                         </div>
-                      <input type="submit" value="Pay Order">
+                      <input id="myBtn" type="submit" value="Pay Order">
                     </div>
+                    <!-- The Modal -->
+                    <div id="myModal" class="modal">
+
+                        <!-- Modal content -->
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <span class="close">&times;</span>
+                                <h3>Settle Payment</h3>
+                            </div>
+                            <div class="modal-body">
+                                <input type="text" id="total-price-modal">
+                                <input type="number" placeholder="Enter the amount.">
+                                <input type="text" placeholder="Change." readonly>
+                                <button type="submit" id="receipt">Print Receipt</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- The Modal -->
+                    <div id="modalReceipt" class="modal">
+
+                    <!-- Modal content -->
+                        <div class="modal-content">
+                            <div class="modal-body">
+                            <?php include "connection.php"; ?> <!--connection -->
+                            <?php error_reporting(0); ?> <!-- for no report on undifined array or variable -->
+                                <h3>A.S.A Restaurant</h3>
+                                <h5>Official Receipt</h5>
+                                <hr>
+                            <table class="receipt-table">
+                                <tr>
+                                    <td> Item Name </td>
+                                    <td> Quantity </td>
+                                    <td> Price </td>
+                                    <td> Total </td>
+                                </tr>
+                            <?php
+                            
+                            
+                                $sql = "SELECT * FROM orders";
+                                $result = mysqli_query($connection, $sql);
+                                if($result->num_rows > 0){
+                                while($row = $result->fetch_assoc()){ 
+                                    
+                                    echo "<tr>";
+                                        echo "<td>", $name = $row['o_name'], "</td>";
+                                        echo "<td>", $quantity = $row['o_quantity'], "</td>";
+                                        echo "<td>", $price = $row['o_price'], "</td>";
+                                        $total = $quantity * $price;
+                                        echo "<td>", $total , "</td>";
+                                    echo "</tr>";
+                                    
+                                }
+                                
+                                }
+                                else
+                                {
+                                    echo "error";
+                                }
+                                ?>
+                                <tr>
+                                    <td style="padding-top: 20px">TOTAL</td>
+                                    <td colspan="2" style="padding-top: 20px"></td>
+                                    <td style="padding-top: 20px"><?php echo "₱". $totalprice; ?></td>
+                                </tr>
+                                <tr>
+                                    <td>Amount Tend</td>
+                                    <td colspan="2" style="padding-top: 20px"></td>
+                                    <td id="amount"></td>
+                                </tr>
+                                <tr>
+                                    <td>Change</td>
+                                    <td colspan="2" style="padding-top: 20px"></td>
+                                    <td id="change"></td>
+                                </tr>
+                                <tr>
+                                    <td colspan="4"> THANK YOU!! </td>
+                                </tr>
+
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+
+
                 </div>
             </div>
         </div>
@@ -224,30 +293,180 @@ include "connection.php";
 
 
 
-    <!-- for increase and decrease quantity of order -->
-    <script type="text/javascript">
-    function increaseCount(b, prod) {
-        let input = b.previousElementSibling;
-        let value = parseInt(input.value, 10);
-        value = isNaN(value) ? 0 : value;
-        value++;
-        input.value = value;
+    <script>
+        // Get the print receipt button
+        const receipt = document.getElementById("receipt");
 
-        let url = "http://capstoneproject.test/home.php?p_id=" + prod + "&quantity=" + value;
-        window.location.href = url;
-    }
+        // Add a click event listener to the print receipt button
+        receipt.addEventListener("click", () => {
+        // Get the value of the amount and change
+        var amountInput = document.querySelector("input[type=number]").value;
+        var changeInput = document.querySelector("input[readonly]").value;
 
-    function decreaseCount(b, prod) {
-        let input = b.nextElementSibling;
-        let value = parseInt(input.value, 10);
-        if (value > 1) {
-            value = isNaN(value) ? 0 : value;
-            value--;
-            input.value = value;
-            let url = "http://capstoneproject.test/home.php?p_id=" + prod + "&quantity=" + value;
-            window.location.href = url;
+        // Update the total price inside the modal
+        const amount = document.getElementById("amount");
+        const change = document.getElementById("change");
+
+        amount.textContent = "₱" + amountInput;
+        change.textContent = changeInput;
+        
+        });
+    </script>
+
+
+    <!-- JS code for getting the updated total price in the modal when clicking the pay order button -->
+    <script>
+        // Get the pay order button
+        const payOrderButton = document.getElementById("myBtn");
+
+        // Add a click event listener to the pay order button
+        payOrderButton.addEventListener("click", () => {
+        // Get the updated total price
+        const updatedTotalPrice = document.getElementById("total_price").innerHTML;
+        // Update the total price inside the modal
+        const totalPriceModal = document.getElementById("total-price-modal");
+        totalPriceModal.value = "₱" + updatedTotalPrice;
+        });
+    </script>
+
+    <!-- Settle Payment Calculation when customer pays -->
+    <script>
+        // Get the necessary elements
+        var amountInput = document.querySelector("input[type=number]");
+        var changeInput = document.querySelector("input[readonly]");
+
+        // Add an event listener to the amount input
+        amountInput.addEventListener("input", function() {
+            // Get the total price and entered amount
+            var totalPrice = document.getElementById("total_price").innerHTML;
+            console.log(totalPrice);
+            var enteredAmount = parseFloat(amountInput.value);
+
+
+            // Calculate the change
+            var change = enteredAmount - totalPrice;
+
+            // Update the change input value
+            if (change >= 0) {
+                changeInput.value = "₱" + change;
+            } else {
+                changeInput.value = "";
+            }
+        });
+    </script>
+
+    <!-- OPEN THE MODAL -->
+    <script>
+        // Get the modal
+        var modal = document.getElementById("myModal");
+
+        // Get the button that opens the modal
+        var btn = document.getElementById("myBtn");
+
+        // Get the <span> element that closes the modal
+        var span = document.getElementsByClassName("close")[0];
+
+        var amountInput = document.querySelector("input[type=number]");
+        var changeInput = document.querySelector("input[readonly]");
+
+        // When the user clicks the button, open the modal 
+        btn.onclick = function() {
+        modal.style.display = "block";
+        }
+
+        // When the user clicks on <span> (x), close the modal
+        span.onclick = function() {
+        modal.style.display = "none";
+        amountInput.value = "";
+        changeInput.value = "";
+        }
+
+    </script>    
+
+        <!-- OPEN THE MODAL FOR RECEIPT -->
+    <script>
+        // Get the modal
+        var modall = document.getElementById("modalReceipt");
+
+        // Get the button that opens the modal
+        var btnn = document.getElementById("receipt");
+
+        // When the user clicks the button, open the modal 
+        btnn.onclick = function() {
+        var amountInput = document.querySelector("input[type=number]").value;
+        var changeInput = document.querySelector("input[readonly]").value;
+
+        
+
+        if(amountInput === "") {
+            alert("Please Enter the amount tend.");
+            modall.style.display = "none";
+        }
+        else if(changeInput === "") {
+            alert("Please Enter more than the total due.");
+            modall.style.display = "none";
+        }
+        else {
+        modall.style.display = "block";
         }
     }
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function(event) {
+        if (event.target == modall) {
+            modall.style.display = "none";
+        }
+        }
+    </script>    
+
+
+    <!-- for increase and decrease quantity of order -->
+    <script type="text/javascript">
+        function updateQuantity(prod, quantity) {
+            let xhr = new XMLHttpRequest();
+            let url = "http://capstoneproject.test/update_quantity.php?p_id=" + prod + "&quantity=" + quantity;
+            xhr.open("GET", url, true);
+            xhr.send();
+        }
+        function increaseCount(b, prod) {
+            let input = b.previousElementSibling;
+            let value = parseInt(input.value, 10);
+            value = isNaN(value) ? 0 : value;
+            value++;
+            input.value = value;
+            updateQuantity(prod, value);
+
+            let item_price = document.getElementById("item_price_" + prod);
+            let price = item_price.textContent;
+            let new_price = (price / (value - 1)) * value;
+
+            item_price.textContent = new_price
+
+            let total_price_element = document.getElementById("total_price");
+            let total_price = parseFloat(total_price_element.textContent);
+            let new_total_price = total_price + (new_price - price);
+            total_price_element.textContent = new_total_price
+        }
+
+        function decreaseCount(b, prod) {
+            let input = b.nextElementSibling;
+            let value = parseInt(input.value, 10);
+            if (value > 1) {
+                value = isNaN(value) ? 0 : value;
+                value--;
+                input.value = value;
+                updateQuantity(prod, value);
+
+                let item_price = document.getElementById("item_price_" + prod);
+                let price = parseFloat(item_price.textContent);
+                let new_price = (price / (value + 1)) * value;
+                item_price.textContent = new_price
+
+                let total_price_element = document.getElementById("total_price");
+                let total_price = parseFloat(total_price_element.textContent);
+                let new_total_price = total_price - (price - new_price);
+                total_price_element.textContent = new_total_price
+            }
+        }
 </script>    
 <script>
         const container = document.getElementById('scroll-container');
