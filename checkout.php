@@ -7,7 +7,7 @@
     <title>Document</title>
 </head>
 <?php include "connection.php"; ?> <!--connection -->
-<?php         error_reporting(0); ?> <!-- for no report on undifined array or variable -->
+<?php error_reporting(0); ?> <!-- for no report on undifined array or variable -->
 <body>
   <center>
     <h3>A.S.A Restaurant</h3>
