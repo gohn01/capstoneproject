@@ -3,9 +3,11 @@
 include 'connection.php'; 
  
 // If file upload form is submitted 
+$date = date("Y/m/d");
 $name = $_POST['name'];
 $price = $_POST['price'];
 $category = $_POST['category'];
+$quantity = $_POST['quantity'];
 $status = $statusMsg = ''; 
 if(isset($_POST["submit"])){ 
     $status = 'error'; 
@@ -38,7 +40,23 @@ if(isset($_POST["submit"])){
         $statusMsg = 'Please select an image file to upload.'; 
     } 
 } 
- 
+
+    $sql1 = "SELECT * FROM product ORDER BY p_id DESC LIMIT 1";
+   
+    $result1 = mysqli_query($connection, $sql1);
+    if($result1->num_rows > 0){
+        $row = $result1->fetch_assoc();
+      $p_id = $row['p_id'];
+    
+        $sql2 = "INSERT INTO inventory (p_id , quantity , date_entered , date_updated) VALUES ( '$p_id' , '$quantity' , '$date' ,'$date')";
+        $result2 = mysqli_query($connection , $sql2);
+     }
+     else 
+     {
+        echo "error Selecting";
+     }
+    
+    
 // Display status message 
 echo $statusMsg; 
 ?>

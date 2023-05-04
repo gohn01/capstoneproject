@@ -92,7 +92,10 @@ include "connection.php";
                                     
                                 </div>
                             </form>
-
+                          
+                        <input type="hidden" name="o_name" id="o_name" value="<?php echo $row["o_name"] ?>">
+                        <input type="text" value="<?php echo $quantity ?>" name="quantity">  
+                        <input type="text" value="<?php echo $price ?>" name="quantity">  
                             <div class="item_img">
                                 <img src="data:image/jpg;charset=utf8;base64,<?php echo base64_encode($row1['p_photo']); ?>" name="p_photo" />
                             </div>
@@ -106,24 +109,27 @@ include "connection.php";
                                 </strong>
 
                                 <div class="item_details2">
-    <button type="submit" class="down" name="updatebtn" onClick="decreaseCount(this, '<?php echo $row["p_id"] ?>')">-</button>
+    <button type="button" class="down" name="updatebtn" onClick="decreaseCount(this, '<?php echo $row["p_id"] ?>')">-</button>
     <input type="text" value="<?php echo $quantity ?>" name="quantity">          
-    <button type="submit" class="up" name="updatebtn" onClick="increaseCount(this, '<?php echo $row["p_id"] ?>')">+</button>
+    <button type="buttonn" class="up" name="updatebtn" onClick="increaseCount(this, '<?php echo $row["p_id"] ?>')">+</button>
 </div>                            </div>
                                 <?php $totalprice = $totalprice + $total; ?>
                         </div>
-                        <?php  }   
-                } 
+                       
+                        <?php  }   ?>
+                                            
+               <?php } ?> 
             
-               } ?>
+                                        <?php  }               ?>
                     </div>
                     <div class="bill_actions">
                         <div class="total">
                             <p>Total:</p>
                             <p>₱<span id="total_price"><?php echo $totalprice; ?></span></p> 
                         </div>
-                      <input type="submit" value="Pay Order">
+                       <a href ="checkout.php"> <input type="submit" value="Pay Order"></a>
                     </div>
+                    </form>
                 </div>
             </div>
         </div>
@@ -218,7 +224,7 @@ include "connection.php";
     </section>
 
 
-<<<<<<< HEAD
+
     <!-- <section class="billing">
         <div>
             <div class="profile">
@@ -243,7 +249,6 @@ include "connection.php";
             swal("Added", "Successfully!", "success");
         }
     </script>
-=======
 
 
 
@@ -251,7 +256,8 @@ include "connection.php";
 
 
 
->>>>>>> 39d11bcf3e2ddf03c175cba35fd8e4c65606dc03
+
+
     <!-- for increase and decrease quantity of order -->
     <script type="text/javascript">
     function increaseCount(b, prod) {
@@ -261,7 +267,7 @@ include "connection.php";
         value++;
         input.value = value;
 
-        let url = "http://capstoneproject.test/home.php?p_id=" + prod + "&quantity=" + value;
+        let url = "home.php?p_id=" + prod + "&quantity=" + value;
         window.location.href = url;
     }
 
@@ -272,7 +278,7 @@ include "connection.php";
             value = isNaN(value) ? 0 : value;
             value--;
             input.value = value;
-            let url = "http://capstoneproject.test/home.php?p_id=" + prod + "&quantity=" + value;
+            let url = "home.php?p_id=" + prod + "&quantity=" + value;
             window.location.href = url;
         }
     }
