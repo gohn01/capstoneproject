@@ -73,10 +73,7 @@
                                     
                                 </div>
                             </form>
-                          
-                        <input type="hidden" name="o_name" id="o_name" value="<?php echo $row["o_name"] ?>">
-                        <input type="text" value="<?php echo $quantity ?>" name="quantity">  
-                        <input type="text" value="<?php echo $price ?>" name="quantity">  
+
                             <div class="item_img">
                                 <img src="data:image/jpg;charset=utf8;base64,<?php echo base64_encode($row1['p_photo']); ?>" name="p_photo" />
                             </div>
@@ -90,10 +87,6 @@
                                 </strong>
 
                                 <div class="item_details2">
-    <button type="button" class="down" name="updatebtn" onClick="decreaseCount(this, '<?php echo $row["p_id"] ?>')">-</button>
-    <input type="text" value="<?php echo $quantity ?>" name="quantity">          
-    <button type="buttonn" class="up" name="updatebtn" onClick="increaseCount(this, '<?php echo $row["p_id"] ?>')">+</button>
-</div>                            </div>
                                 <button type="submit" class="down" name="updatebtn" onClick="decreaseCount(this, '<?php echo $row["p_id"] ?>')">-</button>
                                 <input type="text" value="<?php echo $quantity ?>" name="quantity">          
                                 <button type="submit" class="up" name="updatebtn" onClick="increaseCount(this, '<?php echo $row["p_id"] ?>')">+</button>
@@ -101,21 +94,16 @@
                         </div>
                                 <?php $totalprice = $totalprice + $total; ?>
                         </div>
-                       
-                        <?php  }   ?>
-                                            
-               <?php } ?> 
+                        <?php  }   
+                } 
             
-                                        <?php  }               ?>
+               } ?>
                     </div>
                     <div class="bill_actions">
                         <div class="total">
                             <p>Total:</p>
                             <p>₱<span id="total_price"><?php echo $totalprice; ?></span></p> 
                         </div>
-                       <a href ="checkout.php"> <input type="submit" value="Pay Order"></a>
-                    </div>
-                    </form>
                       <input id="myBtn" type="submit" value="Pay Order">
                     </div>
                     <!-- The Modal -->
@@ -156,12 +144,13 @@
                                 </tr>
                             <?php
                             
-                            
-                                $sql = "SELECT * FROM orders";
+                                $date = date("Y/m/d");
+                                $sql =  "SELECT * FROM orders";
                                 $result = mysqli_query($connection, $sql);
                                 if($result->num_rows > 0){
-                                while($row = $result->fetch_assoc()){ 
-                                    
+                                while($row = $result->fetch_assoc())
+                                { 
+                                    $p_id = $row['p_id'];
                                     echo "<tr>";
                                         echo "<td>", $name = $row['o_name'], "</td>";
                                         echo "<td>", $quantity = $row['o_quantity'], "</td>";
@@ -169,7 +158,8 @@
                                         $total = $quantity * $price;
                                         echo "<td>", $total , "</td>";
                                     echo "</tr>";
-                                    
+                                   
+                                   
                                 }
                                 
                                 }
@@ -195,6 +185,9 @@
                                 </tr>
                                 <tr>
                                     <td colspan="4"> THANK YOU!! </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="4"> <button><a href="checkout.php">NEXT CUSTOMER</a></button> </td>
                                 </tr>
 
                                 </table>
@@ -296,7 +289,6 @@
             <p class="status error">Image(s) not found...</p>
         <?php } ?>
     </section>
-
 
 
     <!-- <section class="billing">
@@ -450,36 +442,11 @@
     </script>    
 
 
-
-
-
-    <!-- for increase and decrease quantity of order -->
-    <script type="text/javascript">
-    function increaseCount(b, prod) {
-        let input = b.previousElementSibling;
-        let value = parseInt(input.value, 10);
-        value = isNaN(value) ? 0 : value;
-        value++;
-        input.value = value;
-
-        let url = "home.php?p_id=" + prod + "&quantity=" + value;
-        window.location.href = url;
-    }
-
-    function decreaseCount(b, prod) {
-        let input = b.nextElementSibling;
-        let value = parseInt(input.value, 10);
-        if (value > 1) {
-            value = isNaN(value) ? 0 : value;
-            value--;
-            input.value = value;
-            let url = "home.php?p_id=" + prod + "&quantity=" + value;
-            window.location.href = url;
     <!-- for increase and decrease quantity of order -->
     <script type="text/javascript">
         function updateQuantity(prod, quantity) {
             let xhr = new XMLHttpRequest();
-            let url = "http://capstoneproject.test/update_quantity.php?p_id=" + prod + "&quantity=" + quantity;
+            let url = "update_quantity.php?p_id=" + prod + "&quantity=" + quantity;
             xhr.open("GET", url, true);
             xhr.send();
         }
