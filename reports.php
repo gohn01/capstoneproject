@@ -2,6 +2,7 @@
     include "connection.php";
     // include "retrieveorder.php";
     include "filtersearch.php";
+    error_reporting(0);  // for no report on undifined array or variable
 ?>
 
 <!DOCTYPE html>
@@ -68,6 +69,7 @@
             <tbody>
 
             <?php 
+            $date = date('Y/m/d');
             if(isset($_GET['from_date']) && isset($_GET['to_date'])){
                 $from_date = $_GET['from_date'];
                 $to_date = $_GET['to_date'];
@@ -109,6 +111,43 @@
                 }else{
                     echo "<p style='color:red;'>" . "No Record Found" . "</p>";
                 }
+            }
+            else
+            {
+                $sql = "SELECT * FROM orders WHERE date_created BETWEEN '$from_date' AND '$to_date' ";
+                $result = mysqli_query($connection,$sql) or 
+                trigger_error("Failed SQL". mysqli_error($connection),E_USER_ERROR);
+
+                if(mysqli_num_rows($result) > 0){
+                    foreach($result as $row){
+                        // echo $row('o_name');
+                            ?>
+                            <tr>    
+                                <td><?php echo $row['o_name']?></td>
+                                <td><?php echo $row['p_id']?></td>
+                                <td><?php echo "P". $row['o_price']?></td>
+                                <td><?php echo $row['o_quantity']?></td>
+                                <td><?php echo $row['date_created']?></td>
+                                <td><?php echo $row['date_updated']?></td>
+                                <td>
+                                    <?php 
+                                       $sql = "SELECT o_quantity ,o_price FROM orders";
+                                       $data = array();
+                                       $totalprice = 0;
+                                       $quantity = $row['o_quantity'];
+                                       $price = $row['o_price'];
+                                       $result = mysqli_query($connection,$sql) or 
+                                       trigger_error("Failed SQL". mysqli_error($connection),E_USER_ERROR);
+                                        while($row = $result->fetch_assoc()) {
+                                            $totalprice = $quantity * $price;
+                                        }
+                                        echo "P" . $totalprice;
+                                    ?>
+                                </td>
+                            </tr>
+                            
+                        <?php 
+                    }
             }
         ?>
             <tr>
