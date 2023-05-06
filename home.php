@@ -259,6 +259,7 @@
     <!-- Display of menu -->
     <?php $category = $_POST['category'];
 
+    if(isset($_POST['category'])){
     $sql = "SELECT * FROM product WHERE p_category = '$category'";
     $result = mysqli_query($connection, $sql);
 
@@ -284,9 +285,42 @@
                     </div>
                 </div>
             <?php } ?>
-        <?php } else { ?>
-            <p class="status error">Image(s) not found...</p>
-        <?php } ?>
+              
+            
+        <?php } }
+            else
+            {
+                $sql = "SELECT * FROM product";
+                $result1 = mysqli_query($connection, $sql);
+            
+                ?>
+                <section class="foods">
+                    <?php if ($result1->num_rows > 0) {
+                        while ($row1 = $result1->fetch_assoc()) { ?>
+                            <div class="cart">
+                                <div class="sub-cart">
+                                    <form action="billinginsert.php" method="post">
+                                        <div class="form-cart">
+                                            <input type="text" name="p_id" value="<?php echo $row1['p_id'] ?>" hidden>
+                                            <img src="data:image/jpg;charset=utf8;base64,<?php echo base64_encode($row1['p_photo'])?>" name="p_photo" />
+                                            <p> </p>
+                                            <div class="counter">
+                                                <h3><?php echo $row1['p_name'] ?><input type="text" name="p_name" value="<?php echo $row1['p_name'] ?>" hidden></h3>
+                                                <p><?php echo "P" . $row1['p_price'] ?><input type="text" name="p_price" value="<?php echo $row1['p_price'] ?>" hidden></p> 
+                                                    <input type="hidden" value="1" name="quantity">
+                                            </div>
+                                        </div>
+                                        <input type="submit" onclick="JSalert()" value="Add to Billing" class="addtobilling">
+                                    </form>
+                                </div>
+                            </div>
+                        <?php } ?>
+                    
+                       
+                    <?php }
+            }
+
+        ?>
     </section>
 
 
