@@ -21,7 +21,7 @@
     </div>
     <main class="table">
         <section class="table__header">
-            <h1>Inventory</h1>
+            <h1 class="text-center">Inventory</h1>
         </section>
         <section class="table__body">
             <table>
