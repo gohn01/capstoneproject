@@ -16,14 +16,15 @@
 <body>
 
     <div class="container">
+        <a href="home.php" class="btn btn-dark mt-2" >Back</a>
         <div class="row">
             <div class="col-md-12">
                 <div class="card mt-5">
-                    <div class="card-header">
-                        <div>Filter Data From</div>
+                    <div class="card-header" style="background-color: rgb(245, 118, 118);">
+                        <div style="color:white; font-weight:bold;">Filter Data From</div>
                     </div>
                     <div class="card-body">
-                        <form action="" method="GET">
+                        <form action="reports.php" method="GET">
                             <div class="row">
                                 <div class="col-md-4">
                                     <div class="form-group">
@@ -40,7 +41,7 @@
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label for="">Click to filter</label><br>
-                                        <button type="submit" class="btn btn-primary">Filter</button>
+                                        <button type="submit" style="background-color: rgb(245, 118, 118);color:white;border:none; border-radius:3px;" class="py-1 px-2">Filter</button>
                                     </div>
                                 </div>
                             </div>
@@ -120,23 +121,24 @@
                 <td></td>
                 <td class="text-start"> 
                     <?php 
-                        $from_date = $_GET['from_date'];
-                        $to_date = $_GET['to_date'];
-                        $sql = "SELECT o_quantity, o_price FROM orders WHERE date_created 
-                         BETWEEN '$from_date' AND '$to_date'";
-
-                        $result = mysqli_query($connection,$sql) or 
-                        trigger_error("Failed SQL". mysqli_error($connection),E_USER_ERROR);
-                        $data = array();
-                        while ($row = mysqli_fetch_array($result)){
-                            $data[] = $row;
+                        if(isset($_GET['from_date']) && isset($_GET['to_date'])){
+                            $from_date = $_GET['from_date'];
+                            $to_date = $_GET['to_date'];
+                            $sql = "SELECT o_quantity, o_price FROM orders WHERE date_created 
+                            BETWEEN '$from_date' AND '$to_date'";
+                    
+                            $result = mysqli_query($connection,$sql) or 
+                            trigger_error("Failed SQL". mysqli_error($connection),E_USER_ERROR);
+                            $data = array();
+                            while ($row = mysqli_fetch_array($result)){
+                                $data[] = $row;
+                            }
+                            $total = 0;
+                            foreach($data as $row){
+                                $total +=  $row['o_quantity'] * $row['o_price'];
+                            }
+                            echo "The total is " ."P".$total;   
                         }
-                        $total = 0;
-                        foreach($data as $row){
-                            $total +=  $row['o_quantity'] * $row['o_price'];
-                            // $totalall = $total / 2;
-                        }
-                        echo "The total is "."P".$total."<br>";
                  ?>
                 </td>
             </tr>
