@@ -12,7 +12,7 @@ error_reporting(0);  // for no report on undifined array or variable
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
-<title>Update Menu</title>
+<title>Delete Menu</title>
 </head>
 <body>
 
@@ -57,13 +57,15 @@ error_reporting(0);  // for no report on undifined array or variable
                      if($result1->num_rows > 0){
                          $row1 = $result1->fetch_assoc();
                          ?>
-                         <tr>  
-                         <td><?php echo $row['p_name'];?></td>
+                         <tr><form action="delete1.php" method="post">
+                        
+                         
+                         <td><?php echo $row['p_name'];?> <input type="text" name="inventid" value="<?php echo $row1['i_id'];?>"><input type="text" name="prodid" value="<?php echo $row['p_id'];?>"></td>
                              <td><?php echo $row1['quantity'];?></td>
                              <td><?php echo "P". $row['p_price'];?></td>
-                             <td><button>Update Menu</button>
+                             <td><button>Delete Menu</button>
                             
-                         </tr>
+                         </tr></form>
                         
                      <?php 
 

@@ -143,7 +143,7 @@
                                 </tr>
                             <?php
                             
-                                $date = date("Y/m/d");
+                              
                                 $sql =  "SELECT * FROM orders";
                                 $result = mysqli_query($connection, $sql);
                                 if($result->num_rows > 0){
@@ -158,9 +158,7 @@
                                         echo "<td>", $total , "</td>";
                                     echo "</tr>";
                                    
-                                   
                                 }
-                                
                                 }
                                 else
                                 {
