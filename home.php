@@ -5,10 +5,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="home.css">
+    <link rel="stylesheet" href="css/home.css">
     <!-- font awesome icon kit -->
-    <script src="https://kit.fontawesome.com/d6d9d9ca7e.js" 
-    crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/d6d9d9ca7e.js" crossorigin="anonymous"></script>
 
     <title>A.S.A</title>
 
@@ -23,7 +22,7 @@
                     <img src="logo.png" alt="logo">
                 </a></li>
             <li><a href="#" class="icon active"><i class="fa-solid fa-house"></i><span class="nav-item">Home</span></a></li>
-            <li><a href="reports.php" class="icon"><i class="fa-solid fa-clock-rotate-left"></i><span class="nav-item">Inventory</span></a></li>
+            <li><a href="inventory.php" class="icon"><i class="fa-solid fa-clock-rotate-left"></i><span class="nav-item">Inventory</span></a></li>
             <li><a href="wallet.php" class="icon"><i class="fa-solid fa-wallet"></i><span class="nav-item">Wallet</span></a></li>
             <li><a href="settings.php" class="icon"><i class="fa-solid fa-gear"></i><span class="nav-item">Setting</span></a></li>
             <li><a href="index.html" class="logout"><i class="fa-solid fa-arrow-right-from-bracket"></i><span class="nav-item">Log out</span></a></li>
@@ -286,7 +285,7 @@
                     </div>
                 </div>
             <?php } ?>
-                <?php} else { ?>
+              
             
         <?php } }
             else
@@ -316,7 +315,7 @@
                                 </div>
                             </div>
                         <?php } ?>
-                            <?php} else { ?>
+                    
                        
                     <?php }
             }
