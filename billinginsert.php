@@ -12,6 +12,8 @@ $o_quant = $_POST['quantity'];
     $row4 = $result4->fetch_assoc();
     if ($quantity > $row4['quantity']){
         ?><script> alert('Not Enough Inventory for "<?php echo $row['o_name'];?>" The Available Quantity is"<?php echo $row2['quantity'];?>"');</script><?php
+        echo  
+        header("location:home.php")
     } 
     else
     {
