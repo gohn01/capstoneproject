@@ -81,7 +81,7 @@
                             <div class="item_details">
                                 <p>
                                     <?php echo $row['o_name'];?> 
-                                    <input type="hidden" name="name" value="<?php echo $row['o_name']?>"> 
+                                    <input type="hidden" name="name" id="prod_name_<?php echo $p_id ?>" value="<?php echo $row['o_name']?>"> 
                                 </p>
                                 <strong>
                                     ₱<span class="item_price"id="item_price_<?php echo $p_id ?>"><?php echo $total ?></span>
@@ -94,11 +94,9 @@
                                     <?php  $sql2 = "SELECT * FROM inventory where p_id = '$p_id'";
                                             $result2 = mysqli_query($connection, $sql2);
                                             if($result2->num_rows > 0){
-                                                $row2 = $result2->fetch_assoc(); 
-                                                if ($quantity > $row2['quantity']){
-                                                    ?><script> alert('Not Enough Inventory for "<?php echo $row['o_name'];?>" The Available Quantity is"<?php echo $row2['quantity'];?>"');</script><?php
-                                                } 
-                                            ?>
+                                                $row2 = $result2->fetch_assoc();
+                                    ?>
+
                                     <button type="submit" class="down" name="updatebtn" onClick="decreaseCount(this, '<?php echo $row["p_id"] ?>')">
                                         -
                                     </button>
@@ -107,12 +105,16 @@
 
                                     <button type="submit" class="up" name="updatebtn" onClick="increaseCount(this, '<?php echo $row["p_id"] ?>')">
                                         +
-                                    </button>    
-
-                                       <?php }
-
-                                             ?>
+                                    </button> 
                                 </div>                            
+
+                                    <span name="inventoryQty" id="inventoryQty_<?php echo $p_id ?>" hidden><?php echo $row2['quantity']?> </span>
+
+
+                                    <?php 
+                                        }
+
+                                    ?>
                             </div>
                                 <?php $totalprice = $totalprice + $total; ?>
                         </div>
@@ -163,29 +165,28 @@
                                     <td> Price </td>
                                     <td> Total </td>
                                 </tr>
-                                <?php
-                            
+                            <?php
                               
-                            $sql =  "SELECT * FROM orders";
-                            $result = mysqli_query($connection, $sql);
-                            if($result->num_rows > 0){
-                            while($row = $result->fetch_assoc())
-                            { 
-                                $p_id = $row['p_id'];
-                                echo "<tr>";
-                                    echo "<td>", $name = $row['o_name'], "</td>";
-                                    echo "<td>", $quantity = $row['o_quantity'], "</td>";
-                                    echo "<td>", $price = $row['o_price'], "</td>";
-                                    $total = $quantity * $price;
-                                    echo "<td>", $total , "</td>";
-                                echo "</tr>";
-                               
-                            }
-                            }
-                            else
-                            {
-                                echo "error";
-                            }
+                                $sql =  "SELECT * FROM orders";
+                                $result = mysqli_query($connection, $sql);
+                                if($result->num_rows > 0){
+                                while($row = $result->fetch_assoc())
+                                { 
+                                    $p_id = $row['p_id'];
+                                    echo "<tr>";
+                                        echo "<td>", $name = $row['o_name'], "</td>";
+                                        echo "<td>", $quantity = $row['o_quantity'], "</td>";
+                                        echo "<td>", $price = $row['o_price'], "</td>";
+                                        $total = $quantity * $price;
+                                        echo "<td>", $total , "</td>";
+                                    echo "</tr>";
+                                
+                                }
+                                }
+                                else
+                                {
+                                    echo "error";
+                                }
                             ?>
                                 <tr>
                                     <td style="padding-top: 20px">TOTAL</td>
@@ -500,6 +501,15 @@
         function increaseCount(b, prod) {
             let input = b.previousElementSibling;
             let value = parseInt(input.value, 10);
+            let inventoryQTY = document.getElementById("inventoryQty_" + prod);
+            let invqty = parseFloat(inventoryQTY.textContent)
+            let productName = document.getElementById("prod_name_" + prod);
+            let prodName = productName.value
+
+            if(value >= invqty)  {
+                alert('Not Enough Inventory for ' + prodName + '! The Available Quantity is ' + invqty + ' only.');
+            }
+            else if(value < invqty) {
             value = isNaN(value) ? 0 : value;
             value++;
             input.value = value;
@@ -515,12 +525,14 @@
             let total_price = parseFloat(total_price_element.textContent);
             let new_total_price = total_price + (new_price - price);
             total_price_element.textContent = new_total_price
+            }
         }
 
 
         function decreaseCount(b, prod) {
             let input = b.nextElementSibling;
             let value = parseInt(input.value, 10);
+
             if (value > 1) {
                 value = isNaN(value) ? 0 : value;
                 value--;
@@ -545,9 +557,13 @@
 <script>
     function manualChange(input, prod) {
         let value = parseInt(input.value, 10);
+        let inventoryQTY = document.getElementById("inventoryQty_" + prod);
+        let invqty = parseFloat(inventoryQTY.textContent)
+        let productName = document.getElementById("prod_name_" + prod);
+        let prodName = productName.value
 
         if (value <= 0) {
-            alert("The quantity is invalid");
+            alert("The quantity is invalid.");
             input.value = 1;
             value = 1;
             updateQuantity(prod, value, updateModalContent);
@@ -575,6 +591,35 @@
             total_price_element.textContent = new_total_price;
 
         }
+        else if (value > invqty){
+            alert('Not Enough Inventory for ' + prodName + '! The Available Quantity is ' + invqty + ' only.');
+            input.value = invqty;
+            value = invqty;
+            updateQuantity(prod, value, updateModalContent);
+
+            let item_price = document.getElementById("item_price_" + prod);
+            let origPrice = document.getElementById("origPrice_" + prod);
+
+            let price = parseFloat(origPrice.textContent);
+
+            let new_price = price * value;
+            item_price.textContent = new_price;
+
+            let total_price_element = document.getElementById("total_price");
+            let total_price = parseFloat(total_price_element.textContent);
+
+
+            // Calculate the new total price
+            let new_total_price = 0;
+            let items = document.querySelectorAll('.bill_item');
+            for (let i = 0; i < items.length; i++) {
+                let item_price = items[i].querySelector('.item_price');
+                let price = parseFloat(item_price.textContent);
+                new_total_price += price;
+            }
+            total_price_element.textContent = new_total_price;
+        }
+
         else {
             value = isNaN(value) ? 0 : value;
             input.value = value;
@@ -602,6 +647,9 @@
             }
             total_price_element.textContent = new_total_price;
         }
+
+
+                                        
     }
 </script>
 
