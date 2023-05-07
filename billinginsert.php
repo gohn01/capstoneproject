@@ -33,9 +33,17 @@ $o_quant = $_POST['quantity'];
           $result2 = mysqli_query($connection, $sql2);
           if ($result2 == "TRUE")
           {
-            echo  
-              header("location:home.php")
-            ;
+            echo header("location:home.php");
+            echo "
+                <script>
+                    Swal.fire({
+                        title: 'Hello!',
+                        text: 'This is a Sweet Alert message!',
+                        icon: 'success',
+                        confirmButtonText: 'OK'
+                    });
+                </script>
+                ";
           }
           else
           {
@@ -53,9 +61,17 @@ $o_quant = $_POST['quantity'];
       $result1 = mysqli_query($connection , $sql1);
       if ($result1 == "TRUE")
       {
-        echo  
-        header("location:home.php")
-      ;
+        echo header("location:home.php");
+        echo "
+          <script>
+            Swal.fire({
+                title: 'Hello!',
+                text: 'This is a Sweet Alert message!',
+                icon: 'success',
+                confirmButtonText: 'OK'
+            });
+          </script>
+          ";
 }
       else
       {
