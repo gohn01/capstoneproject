@@ -10,10 +10,13 @@ $o_quant = $_POST['quantity'];
   if ($result4-> num_rows > 0)
   { 
     $row4 = $result4->fetch_assoc();
-    if ($quantity > $row4['quantity']){
-        ?><script> alert('Not Enough Inventory for "<?php echo $row['o_name'];?>" The Available Quantity is"<?php echo $row2['quantity'];?>"');</script><?php
-        echo  
-        header("location:home.php")
+    if ($o_quant > $row4['quantity']){
+        ?>
+      <script> 
+        alert('Not Enough Inventory for <?php echo $name ;?>, The Available Quantity is <?php echo $row4['quantity']?>');
+        window.location.href= "home.php";
+      </script>
+        <?php
     } 
     else
     {
