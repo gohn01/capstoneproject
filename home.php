@@ -211,6 +211,9 @@
                             </div>
                         </div>
                     </div>
+
+
+
                 </div>
             </div>
         </div>
@@ -299,9 +302,6 @@
                                         <input type="text" name="p_price" value="<?php echo $row['p_price'] ?>" hidden>
                                     </p> 
                                         <input type="hidden" value="1" name="quantity">
-
-                                        <span name="inventoryQty" id="inventoryQty_<?php echo $p_id ?>"><?php echo $row2['quantity']?> </span>
-
                                 </div>
                             </div>
                             <input type="submit" onclick="JSalert()" value="Add to Billing" class="addtobilling">
