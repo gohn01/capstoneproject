@@ -90,11 +90,11 @@
 
 
                                 <div class="item_details2">
-                                <button type="submit" class="down" name="updatebtn" onClick="decreaseCount(this, '<?php echo $row["p_id"] ?>')">-</button>
-                                <input type="text" value="<?php echo $quantity ?>" name="quantity" id="quantity_input_<?php echo $p_id ?>" onchange="manualChange(this, '<?php echo $row['p_id'] ?>')">          
-                                <button type="submit" class="up" name="updatebtn" onClick="increaseCount(this, '<?php echo $row["p_id"] ?>')">+</button>
-                            </div>                            
-                        </div>
+                                    <button type="submit" class="down" name="updatebtn" onClick="decreaseCount(this, '<?php echo $row["p_id"] ?>')">-</button>
+                                    <input type="number" value="<?php echo $quantity ?>" name="quantity" id="quantity_input_<?php echo $p_id ?>" onchange="manualChange(this, '<?php echo $row['p_id'] ?>')">          
+                                    <button type="submit" class="up" name="updatebtn" onClick="increaseCount(this, '<?php echo $row["p_id"] ?>')">+</button>
+                                </div>                            
+                            </div>
                                 <?php $totalprice = $totalprice + $total; ?>
                         </div>
                         <?php  }   
