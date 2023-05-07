@@ -142,8 +142,8 @@
                             </div>
                             <div class="modal-body">
                                 <input type="text" id="total-price-modal">
-                                <input type="number" placeholder="Enter the amount.">
-                                <input type="text" placeholder="Change." readonly>
+                                <input type="number" id="myModaltend" placeholder="Enter the amount.">
+                                <input type="text" id="myModalchange" placeholder="Change." readonly>
                                 <button type="submit" id="receipt">Print Receipt</button>
                             </div>
                         </div>
@@ -211,9 +211,6 @@
                             </div>
                         </div>
                     </div>
-
-
-
                 </div>
             </div>
         </div>
@@ -293,9 +290,18 @@
                                 <img src="data:image/jpg;charset=utf8;base64,<?php echo base64_encode($row['p_photo'])?>" name="p_photo" />
                                 <p> </p>
                                 <div class="counter">
-                                    <h3><?php echo $row['p_name'] ?><input type="text" name="p_name" value="<?php echo $row ['p_name'] ?>" hidden></h3>
-                                    <p><?php echo "P" . $row['p_price'] ?><input type="text" name="p_price" value="<?php echo $row['p_price'] ?>" hidden></p> 
+                                    <h3>
+                                        <?php echo $row['p_name'] ?>
+                                        <input type="text" name="p_name" value="<?php echo $row ['p_name'] ?>" hidden>
+                                    </h3>
+                                    <p>
+                                        <?php echo "P" . $row['p_price'] ?>
+                                        <input type="text" name="p_price" value="<?php echo $row['p_price'] ?>" hidden>
+                                    </p> 
                                         <input type="hidden" value="1" name="quantity">
+
+                                        <span name="inventoryQty" id="inventoryQty_<?php echo $p_id ?>"><?php echo $row2['quantity']?> </span>
+
                                 </div>
                             </div>
                             <input type="submit" onclick="JSalert()" value="Add to Billing" class="addtobilling">
@@ -355,8 +361,8 @@
         // Add a click event listener to the print receipt button
         receipt.addEventListener("click", () => {
         // Get the value of the amount and change
-        var amountInput = document.querySelector("input[type=number]").value;
-        var changeInput = document.querySelector("input[readonly]").value;
+        var amountInput = document.getElementById("myModaltend").value;
+        var changeInput = document.getElementById("myModalchange").value;
 
         // Update the total price inside the modal
         const amount = document.getElementById("amount");
@@ -387,8 +393,8 @@
     <!-- Settle Payment Calculation when customer pays -->
     <script>
         // Get the necessary elements
-        var amountInput = document.querySelector("input[type=number]");
-        var changeInput = document.querySelector("input[readonly]");
+        var amountInput = document.getElementById("myModaltend");
+        var changeInput = document.getElementById("myModalchange");
 
         // Add an event listener to the amount input
         amountInput.addEventListener("input", function() {
@@ -421,8 +427,8 @@
         // Get the <span> element that closes the modal
         var span = document.getElementsByClassName("close")[0];
 
-        var amountInput = document.querySelector("input[type=number]");
-        var changeInput = document.querySelector("input[readonly]");
+        var amountInput = document.getElementById("myModaltend");
+        var changeInput = document.getElementById("myModalchange");
 
         // When the user clicks the button, open the modal 
         btn.onclick = function() {
@@ -435,7 +441,6 @@
         amountInput.value = "";
         changeInput.value = "";
         }
-
     </script>    
 
         <!-- OPEN THE MODAL FOR RECEIPT -->
@@ -448,8 +453,8 @@
 
         // When the user clicks the button, open the modal 
         btnn.onclick = function() {
-        var amountInput = document.querySelector("input[type=number]").value;
-        var changeInput = document.querySelector("input[readonly]").value;
+            var amountInput = document.getElementById("myModaltend").value;
+        var changeInput = document.getElementById("myModalchange").value;
 
             if(amountInput === "") {
                 alert("Please Enter the amount tend.");
