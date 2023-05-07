@@ -86,6 +86,7 @@
                                 </strong>
 
                                 <div class="item_details2">
+                                    <!--Quantity validation -->
                                     <?php  $sql2 = "SELECT * FROM inventory where p_id = '$p_id'";
                                             $result2 = mysqli_query($connection, $sql2);
                                             if($result2->num_rows > 0){
