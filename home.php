@@ -90,14 +90,34 @@
 
 
                                 <div class="item_details2">
-                                    <button type="submit" class="down" name="updatebtn" onClick="decreaseCount(this, '<?php echo $row["p_id"] ?>')">-</button>
-                                    <input type="number" value="<?php echo $quantity ?>" name="quantity" id="quantity_input_<?php echo $p_id ?>" onchange="manualChange(this, '<?php echo $row['p_id'] ?>')">          
-                                    <button type="submit" class="up" name="updatebtn" onClick="increaseCount(this, '<?php echo $row["p_id"] ?>')">+</button>
+                                    <!--Quantity validation -->
+                                    <?php  $sql2 = "SELECT * FROM inventory where p_id = '$p_id'";
+                                            $result2 = mysqli_query($connection, $sql2);
+                                            if($result2->num_rows > 0){
+                                                $row2 = $result2->fetch_assoc(); 
+                                                if ($quantity > $row2['quantity']){
+                                                    ?><script> alert('Not Enough Inventory for "<?php echo $row['o_name'];?>" The Available Quantity is"<?php echo $row2['quantity'];?>"');</script><?php
+                                                } 
+                                            ?>
+                                    <button type="submit" class="down" name="updatebtn" onClick="decreaseCount(this, '<?php echo $row["p_id"] ?>')">
+                                        -
+                                    </button>
+
+                                    <input type="number" value="<?php echo $quantity ?>" name="quantity" id="quantity_input_<?php echo $p_id ?>" onchange="manualChange(this, '<?php echo $row['p_id'] ?>')">   
+
+                                    <button type="submit" class="up" name="updatebtn" onClick="increaseCount(this, '<?php echo $row["p_id"] ?>')">
+                                        +
+                                    </button>    
+
+                                       <?php }
+
+                                             ?>
                                 </div>                            
                             </div>
                                 <?php $totalprice = $totalprice + $total; ?>
                         </div>
-                        <?php  }   
+                        <?php  
+                    }   
                 } 
             
                } ?>
