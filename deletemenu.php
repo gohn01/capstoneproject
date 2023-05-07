@@ -60,7 +60,7 @@ error_reporting(0);  // for no report on undifined array or variable
                          <tr><form action="delete1.php" method="post">
                         
                          
-                         <td><?php echo $row['p_name'];?> <input type="text" name="inventid" value="<?php echo $row1['i_id'];?>"><input type="text" name="prodid" value="<?php echo $row['p_id'];?>"></td>
+                         <td><?php echo $row['p_name'];?> <input type="text" name="inventid" value="<?php echo $row1['i_id'];?>" hidden><input type="text" name="prodid" value="<?php echo $row['p_id'];?>" hidden></td>
                              <td><?php echo $row1['quantity'];?></td>
                              <td><?php echo "P". $row['p_price'];?></td>
                              <td><button>Delete Menu</button>

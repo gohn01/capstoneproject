@@ -4,6 +4,17 @@ $name = $_POST['p_name'];
 $price = $_POST['p_price'];
 $p_id = $_POST['p_id'];
 $o_quant = $_POST['quantity'];
+
+  $sql4 = "SELECT * FROM inventory WHERE p_id = '$p_id'";
+  $result4 = mysqli_query($connection , $sql4);
+  if ($result4-> num_rows > 0)
+  { 
+    $row4 = $result4->fetch_assoc();
+    if ($quantity > $row4['quantity']){
+        ?><script> alert('Not Enough Inventory for "<?php echo $row['o_name'];?>" The Available Quantity is"<?php echo $row2['quantity'];?>"');</script><?php
+    } 
+    else
+    {
   $sql = "SELECT * FROM orders where p_id = '$p_id'";
  
     $result = mysqli_query($connection, $sql);
@@ -46,5 +57,11 @@ $o_quant = $_POST['quantity'];
         echo "insert error";
       }
     }
+  }
+}
+else
+{
+  echo "error Selecting inventory";
+}
           
         
