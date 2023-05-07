@@ -11,6 +11,12 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 
+        <!-- Sweet Alert CSS file -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.1.4/dist/sweetalert2.min.css">
+
+    <!-- Sweet Alert JavaScript file -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.1.4/dist/sweetalert2.all.min.js"></script>
+
     <title>A.S.A</title>
 
 </head>
@@ -26,7 +32,9 @@
             <li><a href="#" class="icon active"><i class="fa-solid fa-house"></i><span class="nav-item">Home</span></a></li>
             <li><a href="inventory.php" class="icon"><i class="fa-solid fa-clock-rotate-left"></i><span class="nav-item">Inventory</span></a></li>
             <li><a href="wallet.php" class="icon"><i class="fa-solid fa-wallet"></i><span class="nav-item">Wallet</span></a></li>
-            <li><a href="settings.php" class="icon"><i class="fa-solid fa-gear"></i><span class="nav-item">Setting</span></a></li>
+            <li>
+                <a href="settings.php" class="icon"><i class="fa-solid fa-gear"></i><span class="nav-item">Setting</span></a>
+            </li>
             <li><a href="index.html" class="logout"><i class="fa-solid fa-arrow-right-from-bracket"></i><span class="nav-item">Log out</span></a></li>
         </ul>
     </nav>
