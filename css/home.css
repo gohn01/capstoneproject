@@ -24,6 +24,7 @@ nav {
     box-shadow: 10px 0 10px lightgray;
 }
 
+
 .logo {
     text-align: center;
     display: flex;
@@ -206,7 +207,7 @@ a {
 
 .seafood{
     position: relative;
-    background-image: url('category/seafood.png');
+    background-image: url('../category/seafood.png');
     background-position: 50% 10px;
     background-size: 65%;
     background-repeat: no-repeat;
@@ -214,7 +215,7 @@ a {
 
 .chicken {
     position: relative;
-    background-image: url('category/chicken.png');
+    background-image: url('../category/chicken.png');
     background-position: 50% 20px;
     background-size: 70%;
     background-repeat: no-repeat;
@@ -222,42 +223,42 @@ a {
 
 .beef {
     position: relative;
-    background-image: url('category/beef.png');
+    background-image: url('../category/beef.png');
     background-position: 50% 12px;
     background-size: 50%;
     background-repeat: no-repeat;
 }
 .best {
     position: relative;
-    background-image: url('category/best-removebg-preview.png');
+    background-image: url('../category/best-removebg-preview.png');
     background-position: 50% 30px;
     background-size: 70%;
     background-repeat: no-repeat;
 }
 .merienda {
     position: relative;
-    background-image: url('category/merienda-removebg-preview.png');
+    background-image: url('../category/merienda-removebg-preview.png');
     background-position: 50% 9px;
     background-size: 67%;
     background-repeat: no-repeat;
 }
 .silog {
     position: relative;
-    background-image: url('category/silog-removebg-preview.png');
+    background-image: url('../category/silog-removebg-preview.png');
     background-position: 50% 25px;
     background-size: 70%;
     background-repeat: no-repeat;
 }
 .drinks {
     position: relative;
-    background-image: url('category/drinks-removebg-preview.png');
+    background-image: url('../category/drinks-removebg-preview.png');
     background-position: 50% 8px;
     background-size: 80%;
     background-repeat: no-repeat;
 }
 .rice {
     position: relative;
-    background-image: url('category/rice-removebg-preview.png');
+    background-image: url('../category/rice-removebg-preview.png');
     background-position: 50% 10px;
     background-size: 70%;
     background-repeat: no-repeat;
@@ -270,11 +271,19 @@ a {
     flex-wrap: wrap;
     gap: 20px;
     margin-left: 120px;
-    max-width: 900px;
+    max-width: 1000px;
     overflow: auto;
-    height: 64vh;
-
+    height: 67vh;
 }
+
+@media screen and (min-width: 1500px) and (max-width: 3000px) {
+    .foods{
+        max-width: 1300px;
+        height: 100%;
+    }
+}
+
+
 
 .foods img {
     width: 200px;

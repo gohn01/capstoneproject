@@ -9,6 +9,11 @@
     <script src="https://kit.fontawesome.com/d6d9d9ca7e.js" crossorigin="anonymous"></script>
 </head>
 <body>
-<li><a href="uploadmenu.html" class="icon"><i class="fa-solid fa-burger-soda"></i><span class="nav-item">Add Menu</span></a></li>
+    <ul>
+    <li><a href="uploadmenu.html" class="icon"><i class="fa-solid fa-burger-soda"></i><span class="nav-item">Add Menu</span></a></li>
+    <li><a href="updatemenu.php" class="icon"><i class="fa-solid fa-burger-soda"></i><span class="nav-item">Update Menu</span></a></li>
+    <li><a href="deletemenu.php" class="icon"><i class="fa-solid fa-burger-soda"></i><span class="nav-item">Delete Menu</span></a></li>
+    <li><a href="register.html" class="icon"><i class="fa-solid fa-burger-soda"></i><span class="nav-item">Register Employee</span></a></li>
+</ul>
 </body>
 </html>
