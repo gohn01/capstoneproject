@@ -8,13 +8,12 @@ $pass = $_POST['password'];
       if ($result == "TRUE")
       {
         echo  
-        header("location:register.html")
-      ;
-}
+        header("location:register.html");
+    }
       else
       {
         echo "insert error";
       }
-    }
+    
           
         
