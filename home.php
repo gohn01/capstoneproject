@@ -86,14 +86,27 @@
                                 </strong>
 
                                 <div class="item_details2">
+                                    <?php  $sql2 = "SELECT * FROM inventory where p_id = '$p_id'";
+                                            $result2 = mysqli_query($connection, $sql2);
+                                            if($result2->num_rows > 0){
+                                                $row2 = $result2->fetch_assoc(); 
+                                                if ($quantity > $row2['quantity']){
+                                                    ?><script> alert('Not Enough Inventory for "<?php echo $row['o_name'];?>" The Available Quantity is"<?php echo $row2['quantity'];?>"');</script><?php
+                                                } 
+                                            ?>
                                 <button type="submit" class="down" name="updatebtn" onClick="decreaseCount(this, '<?php echo $row["p_id"] ?>')">-</button>
-                                <input type="text" value="<?php echo $quantity ?>" name="quantity">          
+                                <input type="text" value="<?php echo $quantity ?>" name="quantity">         
                                 <button type="submit" class="up" name="updatebtn" onClick="increaseCount(this, '<?php echo $row["p_id"] ?>')">+</button>
+                                  
+                                       <?php }
+
+                                             ?>
                             </div>                            
                         </div>
                                 <?php $totalprice = $totalprice + $total; ?>
                         </div>
-                        <?php  }   
+                        <?php  
+                    }   
                 } 
             
                } ?>
@@ -143,13 +156,14 @@
                                 </tr>
                             <?php
                             
-                              
                                 $sql =  "SELECT * FROM orders";
                                 $result = mysqli_query($connection, $sql);
                                 if($result->num_rows > 0){
                                 while($row = $result->fetch_assoc())
                                 { 
                                     $p_id = $row['p_id'];
+                                   
+
                                     echo "<tr>";
                                         echo "<td>", $name = $row['o_name'], "</td>";
                                         echo "<td>", $quantity = $row['o_quantity'], "</td>";
