@@ -324,25 +324,6 @@
     </section>
 
 
-    <!-- <section class="billing">
-        <div>
-            <div class="profile">
-                <p>I'm the Manager</p>
-                <h1>Alexis John Perez</h1>
-            </div>
-            <div class="bills">
-                <h1>Bills</h1>
-            </div>
-            <div class="products">
-                
-            </div>
-            <div>
-                <p>Subtotal</p>
-                <h1>Total</h1>
-            </div>
-        </div>
-    </section> -->
-
 
 
 
