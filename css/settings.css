@@ -136,7 +136,7 @@ body {
     display: inline-block;
     justify-content: center;
   }
-  .modalbody .menulinks {
+  #settingsModal .modalbody .menulinks {
     text-align: center;
     padding: 8px;
     font-size: 25px;
@@ -147,5 +147,18 @@ body {
     border: none;
     outline: none;
     width: 33.33%;
+    text-decoration: none;
+  }
+  #settingsModal .modalbody .regiterlink {
+    text-align: center;
+    padding: 8px;
+    font-size: 25px;
+    margin-top: 10px;
+    background-color: rgb(245, 118, 118);
+    color: white;
+    border-radius: 20px;
+    border: none;
+    outline: none;
+    width: 100%;
     text-decoration: none;
   }
