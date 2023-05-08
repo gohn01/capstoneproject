@@ -11,6 +11,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    /* background-color: #fff; */
     background-color: pink;
 }
 
@@ -37,7 +38,7 @@ body {
     background-color: rgb(247, 201, 209);
     border-radius: 5px;
     padding: 5px 10px;
-    border: 1px solid purple;
+    /* border: 1px solid purple; */
     color: #454545;
     font-weight: bold;
 }

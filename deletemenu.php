@@ -18,8 +18,9 @@ error_reporting(0);  // for no report on undifined array or variable
 </head>
 
 <body>
+
     <div class="home">
-        <a href="home.php" >Home</a>
+        <a href="home.php">Home</a>
     </div>
     <main class="table">
         <section class="table__header">
@@ -36,7 +37,6 @@ error_reporting(0);  // for no report on undifined array or variable
                     </tr>
                 </thead>
                 <tbody>
-    
                     <?php
     
                     $sql = "SELECT * FROM product";
@@ -60,8 +60,8 @@ error_reporting(0);  // for no report on undifined array or variable
                                         </td>
                                         <td><?php echo $row1['quantity']; ?></td>
                                         <td><?php echo "P" . $row['p_price']; ?></td>
-                                        <td><button>Delete Menu</button>
-    
+                                        <td><button>Delete Menu</button></td>
+
                                 </tr>
                                 </form>
     
@@ -82,7 +82,7 @@ error_reporting(0);  // for no report on undifined array or variable
     </main>
 
 
-<div class="table-responsive col-lg-12">
+<!-- <div class="table-responsive col-lg-12">
 
     <table class="table table-striped text-center">
         <thead>
@@ -143,7 +143,7 @@ error_reporting(0);  // for no report on undifined array or variable
             </td>
         </tr>
         </tbody>
-    </table>
+    </table> -->
 
 </div>
 </div>

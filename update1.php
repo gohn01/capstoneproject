@@ -18,12 +18,11 @@
     $p_id = $_POST['p_id'];
    
     
-    $sql = "SELECT product.p_name, product.p_category,inventory.* FROM product RIGHT JOIN inventory 
-    ON product.p_id = inventory.p_id ORDER BY $column $sort";
-
-    // $newsql = $sql . "ORDER BY" . $column . $sort;
-    $result = mysqli_query($connection,$sql) or 
-    trigger_error("Failed SQL". mysqli_error($connection),E_USER_ERROR);
+    $sql = "SELECT * FROM product WHERE p_id = '$p_id'";
+    $result = mysqli_query($connection , $sql);
+    if($result->num_rows > 0){
+        $row = $result->fetch_assoc();
+       
 
 ?>
 
@@ -34,45 +33,24 @@
     <div class="body" >
         <div class="wrapper">
             <div class="form-wrapper sign-in">
-                <form action="uploadmenu.php" method="post" enctype="multipart/form-data">
-                    <h2>Update Menu</h2>
+                <form action="update2.php" method="post" enctype="multipart/form-data">
+                    <h2>Update Inventory</h2>
                     <div class="sm-3">
                       <label for="" class="form-label">Menu Name</label>
-                      <input type="text" name class="form-control">
+                      <input type="text" name="pid" value="<?php echo $row['p_id'];?>" hidden>
+                      <input type="text" name="name" class="form-control" value="<?php echo  $row['p_name'];?>">
                     </div>
-                    <div class="sm-3">
-                        <label for="formFile" class="form-label">Menu Photo</label>
-                        <input class="form-control" type="file" name="image">
-                    </div>
-            
-                    <div class="mb-3">
-                        <label for="" class="form-label">Price</label>
-                        <input type="number" name="price" class="form-control">
-                    </div>
-            
-                    <div class="input-group mb-2">
-                        <label class="input-group-text" for="inputGroupSelect">Category</label>
-                        <select name="category" id="category" class="form-select">
-                            <option value="best">A.S.A Best</option>
-                            <option value="seafood">Seafood</option>
-                            <option value="chicken">Chicken</option>
-                            <option value="merienda">Merienda</option>
-                            <option value="silog">Silog</option>
-                            <option value="beef">Beef</option>
-                            <option value="drinks">Drinks</option>
-                            <option value="rice">Rice</option>
-                        </select>
-                      </div>   
                     <div class="mb-3">
                         <label for="" class="form-label">Quantity</label>
                         <input type="text" name="quantity" class="form-control">
                     </div>
-                    <button type="submit" >Upload</button>
+                    <button type="submit" >Update</button>
                 </form>
             </div>
         </div>
     </div>
-
+    <?php 
+} ?>
     <!-- <div class="body">
         <div class="wrapper">
             <div class="form-wrapper sign-in">
