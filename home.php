@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/home.css">
+    <link rel="stylesheet" href="css/settings.css">
     <!-- font awesome icon kit -->
     <script src="https://kit.fontawesome.com/d6d9d9ca7e.js" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -26,16 +27,56 @@
     <?php error_reporting(0); ?> <!-- for no report on undifined array or variable -->
     <nav>
         <ul>
-            <li><a href="#" class="logo">
-                    <img src="logo.png" alt="logo">
-                </a></li>
-            <li><a href="#" class="icon active"><i class="fa-solid fa-house"></i><span class="nav-item">Home</span></a></li>
-            <li><a href="inventory.php" class="icon"><i class="fa-solid fa-clock-rotate-left"></i><span class="nav-item">Inventory</span></a></li>
-            <li><a href="wallet.php" class="icon"><i class="fa-solid fa-wallet"></i><span class="nav-item">Wallet</span></a></li>
             <li>
-                <a href="settings.php" class="icon"><i class="fa-solid fa-gear"></i><span class="nav-item">Setting</span></a>
+                <a href="#" class="logo">
+                    <img src="logo.png" alt="logo">
+                </a>
             </li>
-            <li><a href="index.html" class="logout"><i class="fa-solid fa-arrow-right-from-bracket"></i><span class="nav-item">Log out</span></a></li>
+            <li>
+                <a href="#" class="icon active"><i class="fa-solid fa-house"></i>
+                    <span class="nav-item">Home</span>
+                </a>
+            </li>
+            <li>
+                <a href="inventory.php" class="icon"><i class="fa-solid fa-clock-rotate-left"></i>
+                    <span class="nav-item">Inventory</span>
+                </a>
+            </li>
+            <li>
+                <a href="wallet.php" class="icon"><i class="fa-solid fa-wallet"></i>
+                    <span class="nav-item">Wallet</span>
+                </a>
+            </li>
+            <li>
+                <a id="openSettings" class="icon"><i class="fa-solid fa-gear"></i><span class="nav-item">Setting</span></a>
+            </li>
+
+            <!-- The Modal -->
+            <div id="settingsModal" class="settingsModal">
+                <!-- Modal content -->
+                <div id="modalcontent">
+                    <div class="modal-header">
+                        <span class="closee">&times;</span>
+                        <h3>Settings</h3>
+                    </div>
+                    <div id="modalbody">
+                        <div class="menulinks">
+                            <a href="uploadmenu.html"><i class="fa-solid fa-plus"></i>Add Menu</a>
+                            <a href="updatemenu.php"><i class="fa-solid fa-wrench"></i>Update Menu</a>
+                            <a href="deletemenu.php"><i class="fa-solid fa-trash"></i>Delete Menu</a>
+                        </div>
+                        <div class="registerlink">
+                            <a href="register.html"><i class="fa-regular fa-registered"></i>Register Employee</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <li>
+                <a href="index.html" class="logout"><i class="fa-solid fa-arrow-right-from-bracket"></i>
+                <span class="nav-item">Log out</span>
+                </a>
+            </li>
         </ul>
     </nav>
 
@@ -475,7 +516,7 @@
             }
         }
 
-        // When the user clicks anywhere outside of the modal, close it and redirect to checkout.php
+        // When the user clicks anywhere outside of the modal, close it
         window.onclick = function(event) {
             if (event.target == modall) {
             modall.style.display = "none";
@@ -483,6 +524,29 @@
             }
         }
     </script>    
+
+    <!-- OPEN THE MODAL FOR SETTINGS -->
+    <script>
+        // Get the modal
+        var modalll = document.getElementById("settingsModal");
+
+        // Get the button that opens the modal
+        var btnnn = document.getElementById("openSettings");
+
+        // Get the <span> element that closes the modal
+        var spannn = document.getElementsByClassName("closee")[0];
+
+        // When the user clicks the button, open the modal 
+        btnnn.onclick = function() {
+        modalll.style.display = "block";
+        }
+
+        // When the user clicks on <span> (x), close the modal
+        spannn.onclick = function() {
+        modalll.style.display = "none";
+        }
+    </script>    
+
 
 
     <!-- for increase and decrease quantity of order -->
