@@ -131,10 +131,8 @@ body {
     font-size: 20px;
   }
   
-  .modalbody {
+  #settingsModal .modalbody {
     padding: 10px;
-    display: inline-block;
-    justify-content: center;
   }
   #settingsModal .modalbody .menulinks {
     text-align: center;
@@ -143,11 +141,10 @@ body {
     margin-top: 10px;
     background-color: rgb(245, 118, 118);
     color: white;
-    border-radius: 20px;
-    border: none;
-    outline: none;
     width: 33.33%;
     text-decoration: none;
+    display: inline-block;
+
   }
   #settingsModal .modalbody .regiterlink {
     text-align: center;
@@ -161,4 +158,6 @@ body {
     outline: none;
     width: 100%;
     text-decoration: none;
+    display: inline-block;
+
   }
