@@ -162,7 +162,7 @@ body {
   }
   .menulinks a:before{
     content: '';
-    background: #54b3d6;
+    background: rgb(245, 118, 118);
     display: block;
     position: absolute;
     margin-top: 60px;
@@ -181,7 +181,7 @@ body {
 
   .registerlink a:before{
     content: '';
-    background: #54b3d6;
+    background:  rgb(245, 118, 118);
     display: block;
     position: absolute;
     margin-top: 60px;

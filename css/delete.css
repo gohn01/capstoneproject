@@ -7,7 +7,7 @@
 
 body {
     min-height: 100vh;
-    background: url('../images/bg.jpg') center / cover;
+    /* background: url('../images/bg.jpg') center / cover; */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -21,7 +21,7 @@ body {
     background-color: rgb(247, 201, 209);
     border-radius: 5px;
     padding: 10px 5px;
-    border: 1px solid purple;
+    /* border: 1px solid purple; */
 }
 
 .home a {
