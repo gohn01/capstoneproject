@@ -16,8 +16,8 @@
 </head>
 
 <body>
-    <div class="home">
-        <a href="home.php" >Home</a>
+    <div class="inventory">
+        <a href="home.php">Home</a>
     </div>
     <main class="table">
         <section class="table__header">
