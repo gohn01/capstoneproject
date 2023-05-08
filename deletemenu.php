@@ -60,7 +60,7 @@ error_reporting(0);  // for no report on undifined array or variable
                                         </td>
                                         <td><?php echo $row1['quantity']; ?></td>
                                         <td><?php echo "P" . $row['p_price']; ?></td>
-                                        <td><button>Delete Menu</button></td>
+                                        <td><button class="btn btn-danger">Delete Menu</button></td>
 
                                 </tr>
                                 </form>

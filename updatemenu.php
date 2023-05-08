@@ -19,7 +19,7 @@ error_reporting(0);  // for no report on undifined array or variable
 
 <body>
     <div class="home">
-        <a href="home.php">home</a>
+        <a href="home.php">Home</a>
     </div>
     <main class="table">
         <section class="table__header">
@@ -53,7 +53,7 @@ error_reporting(0);  // for no report on undifined array or variable
                                     <td><?php echo $row['p_name']; ?> <input type="text" name="i_id" value ="<?php echo $row1['i_id']?>" hidden><input type="text" name="p_id" value ="<?php echo $id ?>" hidden></td>
                                     <td><?php echo $row1['quantity']; ?></td>
                                     <td><?php echo "P" . $row['p_price']; ?></td>
-                                    <td><button>Update Menu</button>
+                                    <td><button class="btn btn-dark">Update Menu</button></td>
                                 </tr>
                                 </form>
                     <?php

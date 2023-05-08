@@ -8,6 +8,7 @@
 
 body{
     background: #fff;
+     /* background: url('../images/bg.jpg') center / cover; */
 }
 
 nav {
@@ -98,6 +99,7 @@ nav ul li a {
 .category h1{
     margin: 20px 0 20px 130px ;
     font-size: 20px;
+    color: #000;
 }
 
 ::-webkit-scrollbar {
