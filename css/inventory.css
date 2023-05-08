@@ -8,10 +8,10 @@
 body {
     min-height: 100vh;
     /* background: url('../images/bg.jpg') center / cover; */
-    background-color: pink;
     display: flex;
     justify-content: center;
     align-items: center;
+    background-color: pink;
 }
 
 .inventory {
@@ -22,7 +22,7 @@ body {
     background-color: rgb(247, 201, 209);
     border-radius: 5px;
     padding: 10px 5px;
-    border: 1px solid purple;
+    /* border: 1px solid purple; */
 }
 
 .inventory a {
