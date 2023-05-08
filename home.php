@@ -94,7 +94,7 @@
                 <div class="bill_content">
                     <div class="bill_header">
                         <p>Bills</p>
-                        <a href="javascript:void(0)" class="closebtn" onclick="closeBill()">&times;</a>
+                        <a href="javascript:void(0)" class="closebtn" onclick="closeBill()" style="text-decoration: none; color:black;">&times;</a>
                     </div>
                     <div class="bill_items">
                     <?php       
