@@ -87,7 +87,7 @@ body {
     margin: auto;
     padding: 0;
     border: 1px solid #888;
-    width: 80%;
+    width: 60%;
     height: 50%;
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
     -webkit-animation-name: animatetop;
@@ -131,33 +131,69 @@ body {
     font-size: 20px;
   }
   
-  #settingsModal .modalbody {
+  #settingsModal #modalbody {
     padding: 10px;
   }
-  #settingsModal .modalbody .menulinks {
+  .menulinks a {
     text-align: center;
     padding: 8px;
-    font-size: 25px;
-    margin-top: 10px;
-    background-color: rgb(245, 118, 118);
-    color: white;
-    width: 33.33%;
+    font-size: 20px;
+    margin-top: 70px;
+    width: 30%;
     text-decoration: none;
     display: inline-block;
-
+    color: #000;
+    align-items: center;
+    justify-content: center;
+    margin-left: 10px;
   }
-  #settingsModal .modalbody .regiterlink {
+  .registerlink a {
     text-align: center;
     padding: 8px;
     font-size: 25px;
-    margin-top: 10px;
-    background-color: rgb(245, 118, 118);
-    color: white;
-    border-radius: 20px;
+    margin-top: 50px;
     border: none;
     outline: none;
     width: 100%;
     text-decoration: none;
     display: inline-block;
+    color: #000;
 
+  }
+  .menulinks a:before{
+    content: '';
+    background: #54b3d6;
+    display: block;
+    position: absolute;
+    margin-top: 60px;
+    width: 0;
+    height: 3px;
+    transition: all 0.3s ease-in-out;
+  }
+  
+  .menulinks a:hover{
+   background-position: 0;
+  }
+  
+  .menulinks a:hover::before{
+    width: 30%;
+  }
+
+  .registerlink a:before{
+    content: '';
+    background: #54b3d6;
+    display: block;
+    position: absolute;
+    margin-top: 60px;
+    width: 0;
+    height: 3px;
+    transition: all 0.3s ease-in-out;
+  }
+  
+  .registerlink a:hover{
+   background-position: 0;
+  }
+  
+  .registerlink a:hover::before{
+    width: 95%;
   }
