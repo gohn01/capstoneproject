@@ -24,7 +24,7 @@ error_reporting(0);  // for no report on undifined array or variable
     <main class="table">
         <section class="table__header">
             <h1 class="text-center">Delete Menu</h1>
-        </section
+        </section>
         <section class="table__body">
             <table>
                 <thead>
