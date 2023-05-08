@@ -27,14 +27,14 @@
 ?>
 
     <div class="settings">
-        <a href="settings.php" >Settings</a>
+        <a href="home.php" >Home</a>
     </div>
 
     <div class="body" >
         <div class="wrapper">
             <div class="form-wrapper sign-in">
                 <form action="update2.php" method="post" enctype="multipart/form-data">
-                    <h2>Update Inventory</h2>
+                    <h2>Update Menu</h2>
                     <div class="sm-3">
                       <label for="" class="form-label">Menu Name</label>
                       <input type="text" name="pid" value="<?php echo $row['p_id'];?>" hidden>
