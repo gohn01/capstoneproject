@@ -44,7 +44,7 @@ nav {
     text-transform: uppercase;
 }
 
-a {
+nav ul li a {
     position: relative;
     color: rgb(85, 83, 83);
     font-size: 14px;
