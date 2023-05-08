@@ -47,14 +47,15 @@ error_reporting(0);  // for no report on undifined array or variable
                             $result1 = mysqli_query($connection, $sql1);
                             if ($result1->num_rows > 0) {
                                 $row1 = $result1->fetch_assoc();
-                    ?>
+                    ?>          <form action="update1.php" method="post">
+                               
                                 <tr>
-                                    <td><?php echo $row['p_name']; ?></td>
+                                    <td><?php echo $row['p_name']; ?> <input type="text" name="i_id" value ="<?php echo $row1['i_id']?>" hidden><input type="text" name="p_id" value ="<?php echo $id" hidden></td>
                                     <td><?php echo $row1['quantity']; ?></td>
                                     <td><?php echo "P" . $row['p_price']; ?></td>
                                     <td><button>Update Menu</button>
                                 </tr>
-    
+                                </form>
                     <?php
     
                             } else {
