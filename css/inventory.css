@@ -7,7 +7,8 @@
 
 body {
     min-height: 100vh;
-    background: url('../images/bg.jpg') center / cover;
+    /* background: url('../images/bg.jpg') center / cover; */
+    background-color: pink;
     display: flex;
     justify-content: center;
     align-items: center;

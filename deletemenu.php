@@ -26,7 +26,7 @@ error_reporting(0);  // for no report on undifined array or variable
             <h1 class="text-center">Delete Menu</h1>
         </section
         <section class="table__body">
-            <table >
+            <table>
                 <thead>
                     <tr>
                         <th>Item Name</th>
@@ -90,7 +90,6 @@ error_reporting(0);  // for no report on undifined array or variable
                 <th>Item Name</th>
                 <th>Quantity</th>
                 <th>Price</th>
-            
             </tr>
         </thead>
         <tbody>
