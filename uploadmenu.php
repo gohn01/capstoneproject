@@ -39,7 +39,7 @@ if(isset($_POST["submit"])){
                             $result1 = mysqli_query($connection , $sql2);
                     }
                 }
-                $status = 'success'; 
+               $status = 'success'; 
                 $statusMsg = "File uploaded successfully."; 
             }else{ 
                 $statusMsg = "File upload failed, please try again."; 

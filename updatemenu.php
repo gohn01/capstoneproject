@@ -54,6 +54,7 @@ error_reporting(0);  // for no report on undifined array or variable
                                     <td><?php echo $row1['quantity']; ?></td>
                                     <td><?php echo "P" . $row['p_price']; ?></td>
                                     <td><button class="btn btn-dark">Update Inventory</button></td>
+                                    
                                 </tr>
                                 </form>
                     <?php
@@ -71,7 +72,6 @@ error_reporting(0);  // for no report on undifined array or variable
             </table>
         </section>
     </main>
-
 
 
 
