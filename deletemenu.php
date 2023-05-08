@@ -19,7 +19,7 @@ error_reporting(0);  // for no report on undifined array or variable
 
 <body>
     <div class="home">
-        <a href="settings.php" >Settings</a>
+        <a href="home.php" >Home</a>
     </div>
     <main class="table">
         <section class="table__header">
